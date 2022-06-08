@@ -13,13 +13,28 @@ Inspired by the swamp meet in Minnesota, the Swamp Meet website aims to do the s
 - [Usage](#usage)
 - [License](#license)
 - [FAQ](#faq)
+-[Future Development Ideas](#future-development-ideas)
 
 ## <ins>Installation</ins>  
 
 ## <ins>Infrastructure</ins>  
-MODELS
+Node.js, Express.js to create RESTful API that allows for GET and POST routes to retrieve and add data so as to respond to user input
+
+Templated using Handlebars.js  
+
+Uses $external library
+
+
+Database uses MySQL and sequelize ORM
+MODELS  
 User, Comment, Item, Categories
 
+Folder structure meets MVC paradim
+
+Uses authentication (express-session and cookies)
+Uses environment variables to protect API keys and other sensitive information
+
+Deployed on Heroku
 ## <ins>Usage</ins>
  
 
@@ -31,3 +46,6 @@ This project is covered under MIT
 
 
 ## <ins>FAQ</ins>
+
+## <ins>Future Development Ideas</ins>
+
