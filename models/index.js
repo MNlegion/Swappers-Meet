@@ -5,7 +5,37 @@ const User = require('./User');
 const Comments = require('./Comments');
 
 // model associations
+User.hasMany(Comments, {
+  foreignKey: 'user_id',
+});
 
+User.hasMany(Product, {
+  foreignKey: 'user_id'
+});
+
+Comment.belongsToOne(User, {
+  foreignKey: 'user_id'
+});
+
+Comment.belongsToOne(Product, {
+  foreignKey: 'product_id'
+});
+
+Product.belongsToOne(User, {
+  foreignKey: 'user_id'
+});
+
+Product.hasMany(Comments, {
+  foreignKey: 'product_id'
+});
+
+Product.belongsToOne(Cateogry, {
+  foreignKey: "category_id"
+});
+
+Category.hasMany(Product, {
+  foreignKey: 'product_id'
+});
 
 // model exports
 module.exports = {
