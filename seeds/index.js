@@ -9,7 +9,7 @@ const seedAll = async () => {
     console.log('\n----- DATABASE SYNCED -----\n');
 
     await seedItemData();
-    console.log('\n----- itemData SEEDED -----\n');
+    console.log('\n----- ITEMDATA SEEDED -----\n');
   
     process.exit(0);
   };

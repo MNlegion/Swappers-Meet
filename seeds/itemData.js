@@ -3,13 +3,13 @@ const { Item } = require('../models');
 const itemData = [
 
     {
-        id: 1,
-        product_name: 'Reading Seeding Data'
+        
+        product_name: 'Reading Seeding Data',
     },
     {
-        id: 2,
-        product_name: 'Love it, Love it'
-    }
+       
+        product_name: 'Love it, Love it',
+    },
 
 ];
 
@@ -17,6 +17,6 @@ const itemData = [
 
 
 
-const seedProducts = () => Item.bulkCreate(itemData);
+const seedItemData = () => Item.bulkCreate(itemData);
 
-module.exports = seedProducts;
+module.exports = seedItemData;

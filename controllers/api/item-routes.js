@@ -3,10 +3,12 @@ const { Item } = require('../../models');
 
 
 
-// get all products
+// get all items
 router.get('/', (req, res) => {
     Item.findAll({
-      
+      attributes: [
+        'product_name'
+      ],
     })
     .then(dbitemData => res.json(dbitemData))
     .catch(err => {
@@ -17,4 +19,8 @@ router.get('/', (req, res) => {
     // be sure to include its associated Category and Tag data
   });
 
+
+
+
+  
 module.exports = router
