@@ -17,6 +17,7 @@ Comments.init(
         primaryKey: true,
         autoIncrement: true
       }
+      //do we want comment_text ?
     },
     {
       sequelize,

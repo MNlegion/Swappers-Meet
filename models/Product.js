@@ -27,6 +27,7 @@ Product.init(
         key: 'id'
       }
     }
+    //do we want product_description?
   },
   {
     sequelize,
