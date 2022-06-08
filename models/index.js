@@ -8,3 +8,9 @@ const Comments = require('./Comments');
 
 
 // model exports
+module.exports = {
+    Product,
+    Category,
+    User,
+    Comments,
+  };
