@@ -1,4 +1,4 @@
-const seedItemData = require('./itemData');
+const seedProductData = require('./itemData');
 
 
 
@@ -8,8 +8,8 @@ const seedAll = async () => {
     await sequelize.sync({ force: true });
     console.log('\n----- DATABASE SYNCED -----\n');
 
-    await seedItemData();
-    console.log('\n----- ITEMDATA SEEDED -----\n');
+    await seedProductData();
+    console.log('\n----- PRODUCTDATA SEEDED -----\n');
   
     process.exit(0);
   };

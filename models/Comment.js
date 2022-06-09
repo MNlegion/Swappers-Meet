@@ -5,11 +5,11 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection.js');
 
 // Initialize Comments model (table) by extending off Sequelize's Model class
-class Comments extends Model {}
+class Comment extends Model {}
 
 // set up fields and rules for Comments model
 // Need to continue to develop what this comments model entails
-Comments.init(
+Comment.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -24,8 +24,8 @@ Comments.init(
       timestamps: false,
       freezeTableName: true,
       underscored: true,
-      modelName: 'comments',
+      modelName: 'comment',
     }
   );
   
-  module.exports = Comments;
+  module.exports = Comment;
