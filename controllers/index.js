@@ -1,15 +1,13 @@
 const router = require('express').Router();
-//const homeRoutes = require('./home-routes.js');  // client facing
+
 const apiRoutes = require('./api');
+const clientRoutes = require('./client');
 
-
-//router.use('/', homeRoutes);    // client facing
+router.use('/', clientRoutes);
 router.use('/api', apiRoutes);
 
-
-
 router.use((req, res) => {
-  res.status(404).end();
+  res.send("<h1>Sorry, non-existent route!</h1>")
 });
 
 module.exports = router;
