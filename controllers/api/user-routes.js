@@ -48,7 +48,7 @@ router.put('/:id', (req, res) => {
   
 
 //get user----will display username and email---not sure about path name//
-router.get('/:id', (req,res) => {
+router.get('/:id', (req, res) => {
     User.findOne({
         attributes: { exclude: ['password'] },
         where: {
@@ -89,3 +89,16 @@ router.delete('/:id', (req, res) => {
       });
   });
 
+//logout
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  }
+  else {
+    res.status(404).end();
+  }
+});
+
+module.exports = router;

@@ -1,6 +1,6 @@
 router.get('/', (req, res) => {
 
-    // Posts FindAll limit 5
+    // Posts FindAll limit 5 newest products
     // .then dbposts data set to variable
 
     res.render('homepage', {
