@@ -3,12 +3,13 @@ const { Item } = require('../models');
 const itemData = [
 
     {
+        title: 'It works',
+        description: 'Reading Seeding Data',
         
-        product_name: 'Reading Seeding Data',
     },
     {
-       
-        product_name: 'Love it, Love it',
+        title: 'it really works',
+        description: 'Love it, Love it',
     },
 
 ];

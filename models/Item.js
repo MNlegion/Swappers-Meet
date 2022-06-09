@@ -15,7 +15,11 @@ Item.init(
         primaryKey: true,
         autoIncrement: true
     },
-    product_name: {
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    description: {
         type: DataTypes.STRING,
         allowNull: false       
     },
