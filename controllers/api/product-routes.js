@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { use } = require('.');
-const { User, Product, Comments, Category } = require('../../models');
+const { User, Product, Comment, Category } = require('../../models');
 
 //create product////
 

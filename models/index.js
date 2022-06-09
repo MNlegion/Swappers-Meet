@@ -2,10 +2,10 @@
 const Product = require('./Product');
 const Category = require('./Category');
 const User = require('./User');
-const Comments = require('./Comments');
+const Comment = require('./Comment');
 
 // model associations
-User.hasMany(Comments, {
+User.hasMany(Comment, {
   foreignKey: 'user_id',
 });
 
@@ -21,7 +21,7 @@ Product.belongsToOne(User, {
   foreignKey: 'user_id'
 });
 
-Product.hasMany(Comments, {
+Product.hasMany(Comment, {
   foreignKey: 'product_id'
 });
 
@@ -44,5 +44,5 @@ module.exports = {
     Product,
     Category,
     User,
-    Comments,
+    Comment,
   };
