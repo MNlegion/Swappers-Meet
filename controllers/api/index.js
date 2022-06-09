@@ -1,4 +1,5 @@
 const router = require('express').Router();
+
 const catRoutes = require('./category-routes');
 const comRoutes = require('./comment-routes');
 const proRoutes = require('./product-routes');
@@ -10,3 +11,4 @@ router.use('/product', proRoutes);
 router.use('/user', usrRoutes);
 
 module.exports = router;
+
