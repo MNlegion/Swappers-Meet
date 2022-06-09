@@ -9,7 +9,7 @@ User.hasMany(Comment, {
   foreignKey: 'user_id',
 });
 
-Comments.belongsToOne(User, {
+Comment.belongsToOne(User, {
   foreignKey: 'user_id'
 });
 
@@ -25,7 +25,7 @@ Product.hasMany(Comment, {
   foreignKey: 'product_id'
 });
 
-Comments.belongsToOne(Product, {
+Comment.belongsToOne(Product, {
   foreignKey: 'product_id'
 });
 
