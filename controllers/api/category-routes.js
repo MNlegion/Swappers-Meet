@@ -5,6 +5,7 @@
 
 const { Product } = require("../../models");
 
+
 router.get('/:id', (req, res) => {
     Product.findAll({
         where: {
