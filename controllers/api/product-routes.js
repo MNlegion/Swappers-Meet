@@ -9,17 +9,33 @@ router.post('/', (req, res) => {
         description: req.body.description,
         category: //not sure how to link category, how are we setting up page?
     })
-        .then(dbPostData => res.json(dbPostData))
+        .then(createProd => res.json(createProd))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
         });
 });
 
-
-
 //delete product//
-
+router.delete('/:id', (req, res) => {
+    Product.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(delProd => {
+        if (!delProd) {
+          res.status(404).json({ message: 'No post found with this id' });
+          return;
+        }
+        res.json(delProd);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+    
+})
 
 
 //update product? idt we will have this function, justa delete product//
