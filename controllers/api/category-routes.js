@@ -1,5 +1,4 @@
-
-
+const router = require('express').Router();
 
 //returns category with associated products//
 
@@ -35,3 +34,5 @@ router.get('/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
+
+module.exports = router;

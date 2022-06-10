@@ -2,4 +2,4 @@
 
 
 //get prodcust by userid//
-/product/user/:id
+// /product/user/:id
