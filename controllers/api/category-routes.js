@@ -3,7 +3,7 @@
 
 //returns category with associated products//
 
-const { Product } = require("../../models");
+const { Product, } = require("../../models");
 
 router.get('/:id', (req, res) => {
     Product.findAll({
