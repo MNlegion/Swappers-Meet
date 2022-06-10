@@ -24,6 +24,7 @@ Templated using Handlebars.js
 
 Uses $external library
 
+Uses bcrypt for password validation  
 
 Database uses MySQL and sequelize ORM
 MODELS  
