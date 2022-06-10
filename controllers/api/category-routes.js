@@ -1,9 +1,9 @@
-
-
+const router = require('express').Router();
+const sequelize = require('../config/connection');
 
 //returns category with associated products//
 
-const { Product } = require("../../models");
+const { Product, Comment, User } = require("../../models");
 
 
 router.get('/:id', (req, res) => {
@@ -36,3 +36,7 @@ router.get('/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
+
+
+
+module.exports = router;
