@@ -8,7 +8,8 @@ const sequelize = require('../config/connection.js');
 class Comments extends Model {}
 
 // set up fields and rules for Comments model
-// Need to continue to develop what this comments model entails
+// Need to continue to develop what this comments model entails/ comment_text/ is_bid boolean,
+//references/ belongs to users/ belongs to one item
 Comments.init(
     {
       id: {
