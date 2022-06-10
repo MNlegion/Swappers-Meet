@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
         });
 });
 
-//delete product//
+//delete product, should delete any comments associated with ?//
 router.delete('/:id', (req, res) => {
     Product.destroy({
         where: {
