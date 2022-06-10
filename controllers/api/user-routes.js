@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { use } = require('.');
 const { User, Product, Comment, Category} = require('../../models');
 
-//create user, move to homepage????//
+//create user
 router.post('/signup', (req, res) => {
     User.create({
       username: req.body.username,
