@@ -5,6 +5,7 @@ const clientRoutes = require('./client');
 
 //router.use('/', clientRoutes);
 router.use('/api', apiRoutes);
+router.use('/', clientRoutes);
 
 // catchall
 router.use((req, res) => {
