@@ -13,7 +13,9 @@ app.use(express.urlencoded({ extended: true }));
 // turn on routes
 app.use(routes);
 
+// app.use(require('./controllers/'));
+
 // turn on connection to db and server
-sequelize.sync({ force: true }).then(() => {  //configuration parameter ({force: true}) means that the databases must sync with the model definitions and associations or they recreate!
+sequelize.sync({ force: false }).then(() => {  //configuration parameter ({force: true}) means that the databases must sync with the model definitions and associations or they recreate!
     app.listen(PORT, () => console.log(`Now listening on ${PORT}`));
   });
