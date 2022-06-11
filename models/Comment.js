@@ -25,6 +25,11 @@ Comment.init(
         len: [1]
       }
     },
+    is_bid: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -32,7 +37,7 @@ Comment.init(
         key: 'id'
       }
     },
-    product_name: {                    // *** or could be decription??
+    product_id: {                    
       type: DataTypes.INTEGER,
       references: {
         model: 'product',

@@ -13,7 +13,7 @@ User.hasMany(Comment, {
 
 Comment.belongsTo(User, {
   foreignKey: 'user_id',
-    onDelete: 'cascade'     // **
+    onDelete: 'cascade'     
 });
 
 User.hasMany(Product, {
@@ -22,7 +22,7 @@ User.hasMany(Product, {
 
 Product.belongsTo(User, {
   foreignKey: 'user_id',
-  onDelete: 'cascade'       // ** 
+  onDelete: 'cascade'        
 });
 
 Product.hasMany(Comment, {
@@ -31,7 +31,7 @@ Product.hasMany(Comment, {
 
 Comment.belongsTo(Product, {
   foreignKey: 'product_id',
-  onDelete: 'cascade'        // **
+  onDelete: 'cascade'        
 });
 
 Category.hasMany(Product, {
