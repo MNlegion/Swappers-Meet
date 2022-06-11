@@ -27,24 +27,27 @@ router.post('/signup', (req, res) => {
 
 //update user---are we goign to have an update form for user? idt so//
 router.put('/:id', (req, res) => {
-    User.update(req.body.email, {
-      individualHooks: true,
-      where: {
-        id: req.params.id
+  User.update({
+    email: req.body.email
+  },
+  {
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(dbUpdateCat => {
+      if (!dbUpdateCat) {
+        res.status(404).json({ message: 'No category found with this id' });
+        return;
       }
+      res.json(dbUpdateCat);
     })
-      .then(userUpdate => {
-        if (!userUpdate) {
-          res.status(404).json({ message: 'No user found with this id' });
-          return;
-        }
-        res.json(userUpdate);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  });
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
   
 
 //get user by id THIS WORKS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
