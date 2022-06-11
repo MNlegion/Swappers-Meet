@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { use } = require('.');
 const { User, Product, Comment, Category } = require('../../models');
 
 //create product////
@@ -7,8 +6,8 @@ router.post('/', (req, res) => {
     Product.Create({
         product_name: req.body.product_name,
         description: req.body.description,
-        category: //not sure how to link category, how are we setting up page?
-    })
+        // category: //not sure how to link category, how are we setting up page?
+})
         .then(createProd => res.json(createProd))
         .catch(err => {
             console.log(err);
@@ -69,3 +68,5 @@ router.get('/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
+
+module.exports = router;

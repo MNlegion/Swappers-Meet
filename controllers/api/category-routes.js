@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const sequelize = require('../config/connection');
 
 //returns category with associated products//
 
@@ -25,7 +24,5 @@ router.get('/', (req, res) => { //
             res.status(500).json(err);
         });
 });
-
-
 
 module.exports = router;
