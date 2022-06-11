@@ -4,7 +4,7 @@ const { Comment } = require('../../models');
 
 
 
-//find all comments
+//find all comments-works but no seed data!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 router.get('/', (req, res) => {
     Comment.findAll()
       .then(dbCommentData => res.json(dbCommentData))
@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
   });
   
 
-//create comment//
+//create comment// we dont have product id in seeds, not sure if we want to set up route differently or add id to product
 router.post('/', (req, res) => {
     // expects => {comment_text: "This is the comment", user_id: 1, post_id: 2}
     Comment.create({
@@ -30,7 +30,7 @@ router.post('/', (req, res) => {
       });
   });
 
-//delete comments//
+//delete comments//---no seeded but returns no comment with this id so should work!!!!!!
 router.delete('/:id', (req, res) => {
     Comment.destroy({
       where: {

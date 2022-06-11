@@ -1,11 +1,8 @@
-const router = require("express").Router();
-
-//returns category with associated products//
+const router = require('express').Router();
 
 const { Category, Comment, User, Product } = require("../../models");
 
-// get all
-
+// get all category---it works!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 router.get("/", (req, res) => {
   //
   Category.findAll({
@@ -26,6 +23,16 @@ router.get("/", (req, res) => {
     });
 });
 
+//create category --its works!!!!!!! 
+router.post('/', (req, res) => {
+  Category.create({
+    category_name: req.body.category_name
+  })
+  .then(newCat => res.json(newCat))
+  .catch(err => {
+    res.status(500).json(err);
+  });
+});
 
 
 module.exports = router;
