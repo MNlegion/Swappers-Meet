@@ -9,6 +9,9 @@ require('dotenv').config();
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+// ---------- FOR TESTING ONLY API ROUTES ---------- //
+// const routes = require('./controllers/api');
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -30,12 +33,17 @@ app.use(session(sess));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
+// middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
-sequelize.sync({ force: false }).then(() => {
-    app.listen(PORT, () => console.log('Now listening on', PORT));
-});
+app.use(require('./controllers/'));
+
+// turn on connection to db and server
+sequelize.sync({ force: false }).then(() => {  //configuration parameter ({force: true}) means that the databases must sync with the model definitions and associations or they recreate!
+    app.listen(PORT, () => console.log(`Now listening on ${PORT}`));
+  });
+

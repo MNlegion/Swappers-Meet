@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { use } = require('.');
+
 const { User, Product, Comment, Category} = require('../../models');
 
-//create user, put route also in homepage????//
+//create user-----IT WORKS and doesn't allow creation of duplicate email !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 router.post('/signup', (req, res) => {
     User.create({
       username: req.body.username,
@@ -11,9 +11,9 @@ router.post('/signup', (req, res) => {
     })
       .then(userSignup => {
         req.session.save(() => {
-          req.session.user_id = userSignup.id;
-          req.session.username = userSignup.username;
-          req.session.loggedIn = true;
+          // req.session.user_id = userSignup.id;
+          // req.session.username = userSignup.username;
+          // req.session.loggedIn = true;
     
           res.json(userSignup);
         });
@@ -25,29 +25,32 @@ router.post('/signup', (req, res) => {
   });
   
 
-//update user---are we goign to have an update form for user? idt so//
+//update user---are we goign to have an update form for user email? idt so// BUT IT WORKS ANYWAYS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!S
 router.put('/:id', (req, res) => {
-    User.update(req.body.email, {
-      individualHooks: true,
-      where: {
-        id: req.params.id
+  User.update({
+    email: req.body.email
+  },
+  {
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(updateEmail => {
+      if (!updateEmail) {
+        res.status(404).json({ message: 'No category found with this id' });
+        return;
       }
+      res.json(updateEmail);
     })
-      .then(userUpdate => {
-        if (!userUpdate) {
-          res.status(404).json({ message: 'No user found with this id' });
-          return;
-        }
-        res.json(userUpdate);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  });
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
   
 
-//get user----will display username and email---not sure about path name//
+//get user by id THIS WORKS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 router.get('/:id', (req, res) => {
     User.findOne({
         attributes: { exclude: ['password'] },
@@ -69,7 +72,7 @@ router.get('/:id', (req, res) => {
 });
 
 
-//delete user---do we want this function?//
+//delete user---do we want this function? BUT IT WORKS ANYWAYS!!!!!!!!!!!!!!!!!!!!!!!!//
 router.delete('/:id', (req, res) => {
     User.destroy({
       where: {
@@ -88,6 +91,38 @@ router.delete('/:id', (req, res) => {
         res.status(500).json(err);
       });
   });
+
+
+//login
+  router.post('/login', (req, res) => {
+    User.findOne({
+      where: {
+        email: req.body.email
+      }
+    }).then(userLogin => {
+      if (!userLogin) {
+        res.status(400).json({ message: 'No user with that email address!' });
+        return;
+      }
+  
+      const validPassword = userLogin.checkPassword(req.body.password);
+  
+      if (!validPassword) {
+        res.status(400).json({ message: 'Incorrect password!' });
+        return;
+      }
+  
+      req.session.save(() => {
+        req.session.user_id = userLogin.id;
+        req.session.username = userLogin.username;
+        req.session.loggedIn = true;
+    
+        res.json({ user: userLogin, message: 'You are now logged in!' });
+      });
+    });
+  });
+  
+
 
 //logout
 router.post('/logout', (req, res) => {
