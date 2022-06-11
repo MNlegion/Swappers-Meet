@@ -1,4 +1,4 @@
-const router = require("express").Router();
+const router = require('express').Router();
 
 //returns category with associated products//
 
