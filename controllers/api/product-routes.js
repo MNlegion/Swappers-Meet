@@ -1,12 +1,14 @@
 const router = require('express').Router();
 const { User, Product, Comment, Category } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 //create product---it works!!!!!!!!!!!!!!!!!!!!!!!!////
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     Product.create({
         product_name: req.body.product_name,
         description: req.body.description,
-        category_id: req.body.category_id
+        category_id: req.body.category_id,
+        user_id: req.session.user_id
         //category: not sure how to link category, and include username how are we setting up page?
     })
         .then(createProd => res.json(createProd))
@@ -53,6 +55,10 @@ router.get('/', (req, res) => {
             {
                 model: User,
                 attributes: ['username', 'email']
+            },
+            {
+                model: Category,
+                attributes: ['category_name']
             }
         ]
     })

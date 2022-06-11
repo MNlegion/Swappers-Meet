@@ -8,7 +8,7 @@ const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection.js');
 
 //import with auth
-const withAuth = require('../../utils/auth');
+const withAuth = require('../utils/auth');
 
 // Initialize User model (table) by extending off Sequelize's Model class
 class User extends Model {

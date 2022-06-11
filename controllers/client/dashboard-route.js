@@ -1,5 +1,5 @@
 
 
 
-// //get prodcust by userid//
+//get prodcust by userid//
 // /product/user/:id

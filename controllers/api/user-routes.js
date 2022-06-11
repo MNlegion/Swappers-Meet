@@ -75,6 +75,10 @@ router.get('/:id', (req, res) => {
 router.get('/', (req, res) => {
   User.findAll({
       attributes: { exclude: ['password'] },
+      include: {
+        model: Product,
+        attributes: ["product_name"]
+      }
   })
   .then(userData => {
       if (!userData) {
