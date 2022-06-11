@@ -6,8 +6,8 @@ router.post('/', (req, res) => {
     Product.Create({
         product_name: req.body.product_name,
         description: req.body.description,
-        // category: //not sure how to link category, how are we setting up page?
-})
+        //category: not sure how to link category, how are we setting up page?
+    })
         .then(createProd => res.json(createProd))
         .catch(err => {
             console.log(err);
