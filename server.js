@@ -1,13 +1,10 @@
 const path = require('path');
 const express = require('express');
-const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
-require('dotenv').config();
-
 const sequelize = require('./config/connection');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
+require('dotenv').config();
 
 // ---------- FOR TESTING ONLY API ROUTES ---------- //
 // const routes = require('./controllers/api');
@@ -17,17 +14,20 @@ const PORT = process.env.PORT || 3001;
 
 // Set up custom helpers
 const hbs = exphbs.create({ helpers });
-const sess = {
-    secret: 'Thisistopreventfromgettinghacked',
-    cookie: {},
-    resave: false,
-    saveUninitialized: true,
-    store: new SequelizeStore({
-        db: sequelize
-    })
-};
 
-app.use(session(sess));
+// session stuff 
+// const sess = {
+//     secret: 'Thisistopreventfromgettinghacked',
+//     cookie: {},
+//     resave: false,
+//     saveUninitialized: true,
+//     store: new SequelizeStore({
+//         db: sequelize
+//     })
+// };
+// const session = require('express-session');
+// const SequelizeStore = require('connect-session-sequelize')(session.Store);
+// app.use(session(sess));
 
 //  Express.js will use handlebars template engine
 app.engine('handlebars', hbs.engine);
