@@ -1,10 +1,10 @@
 const router = require('express').Router();
 
-const apiRoutes = require('./api');
-// const clientRoutes = require('./client');
+const apiRoutes = require('./api/index');
+const clientRoutes = require('./client/index');
 
-// router.use('/', clientRoutes);
 router.use('/api', apiRoutes);
+router.use('/', clientRoutes);
 
 // catchall
 router.use((req, res) => {
