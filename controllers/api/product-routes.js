@@ -7,7 +7,7 @@ router.post('/', (req, res) => {
         product_name: req.body.product_name,
         description: req.body.description,
         category_id: req.body.category_id
-        //category: not sure how to link category, how are we setting up page?
+        //category: not sure how to link category, and include username how are we setting up page?
     })
         .then(createProd => res.json(createProd))
         .catch(err => {
@@ -38,7 +38,31 @@ router.delete('/:id', (req, res) => {
 })
 
 
-//update product? idt we will have this function, justa delete product//
+//find all products
+router.get('/', (req, res) => {
+    Product.findAll({
+        include: [
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+                model: User,
+                attributes: ['username', 'email']
+            }
+        ]
+    })
+        .then(productData => res.json(productData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
 
 
 //get product by id and associated comments--when click on or displaying product//

@@ -71,6 +71,35 @@ router.get('/:id', (req, res) => {
         });
 });
 
+//find all users---IT WORKS!!!!!
+router.get('/', (req, res) => {
+  User.findAll({
+      attributes: { exclude: ['password'] },
+  })
+  .then(userData => {
+      if (!userData) {
+          res.status(404).json({ message: 'No user found with this id' });
+          return;
+        }
+        res.json(userData);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 //delete user---do we want this function? BUT IT WORKS ANYWAYS!!!!!!!!!!!!!!!!!!!!!!!!//
 router.delete('/:id', (req, res) => {
