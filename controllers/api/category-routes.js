@@ -4,8 +4,7 @@ const router = require('express').Router();
 
 const { Category, Comment, User, Product } = require("../../models");
 
-// get all
-
+// get all category---it works!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 router.get("/", (req, res) => {
   //
   Category.findAll({
