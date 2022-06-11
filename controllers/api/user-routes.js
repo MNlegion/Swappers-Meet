@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { use } = require('.');
 const { User, Product, Comment, Category} = require('../../models');
 
-//create user, put route also in homepage????//
+//create user
 router.post('/signup', (req, res) => {
     User.create({
       username: req.body.username,
@@ -88,6 +88,38 @@ router.delete('/:id', (req, res) => {
         res.status(500).json(err);
       });
   });
+
+
+//login
+  router.post('/login', (req, res) => {
+    User.findOne({
+      where: {
+        email: req.body.email
+      }
+    }).then(userLogin => {
+      if (!userLogin) {
+        res.status(400).json({ message: 'No user with that email address!' });
+        return;
+      }
+  
+      const validPassword = userLogin.checkPassword(req.body.password);
+  
+      if (!validPassword) {
+        res.status(400).json({ message: 'Incorrect password!' });
+        return;
+      }
+  
+      req.session.save(() => {
+        req.session.user_id = userLogin.id;
+        req.session.username = userLogin.username;
+        req.session.loggedIn = true;
+    
+        res.json({ user: userLogin, message: 'You are now logged in!' });
+      });
+    });
+  });
+  
+
 
 //logout
 router.post('/logout', (req, res) => {
