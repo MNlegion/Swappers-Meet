@@ -2,8 +2,8 @@ const router = require('express').Router();
 
 const { User, Product, Comment, Category} = require('../../models');
 
-//create user-----IT WORKS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-router.post('/user/signup', (req, res) => {
+//create user-----IT WORKS and doesn't allow creation of duplicate email !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+router.post('/signup', (req, res) => {
     User.create({
       username: req.body.username,
       email: req.body.email,
@@ -72,7 +72,7 @@ router.get('/:id', (req, res) => {
 });
 
 
-//delete user---do we want this function?//
+//delete user---do we want this function? BUT IT WORKS ANYWAYS!!!!!!!!!!!!!!!!!!!!!!!!//
 router.delete('/:id', (req, res) => {
     User.destroy({
       where: {
