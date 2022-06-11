@@ -35,12 +35,12 @@ router.put('/:id', (req, res) => {
       id: req.params.id
     }
   })
-    .then(dbUpdateCat => {
-      if (!dbUpdateCat) {
+    .then(updateEmail => {
+      if (!updateEmail) {
         res.status(404).json({ message: 'No category found with this id' });
         return;
       }
-      res.json(dbUpdateCat);
+      res.json(updateEmail);
     })
     .catch(err => {
       console.log(err);
