@@ -18,7 +18,7 @@ const productData = [
 
 ];
 
-
+//do we need an id for products? 
 const seedProductData = () => Product.bulkCreate(productData);
 
 module.exports = seedProductData;
