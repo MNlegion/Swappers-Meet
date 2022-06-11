@@ -7,6 +7,9 @@ const bcrypt = require('bcrypt');
 // import our database connection from config.js
 const sequelize = require('../config/connection.js');
 
+//import with auth
+const withAuth = require('../../utils/auth');
+
 // Initialize User model (table) by extending off Sequelize's Model class
 class User extends Model {
     // set up method to run on instance data (per user) to check password

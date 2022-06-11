@@ -90,17 +90,6 @@ router.get('/', (req, res) => {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
 //delete user---do we want this function? BUT IT WORKS ANYWAYS!!!!!!!!!!!!!!!!!!!!!!!!//
 router.delete('/:id', (req, res) => {
     User.destroy({
