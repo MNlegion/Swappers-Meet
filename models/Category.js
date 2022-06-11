@@ -7,7 +7,7 @@ const sequelize = require('../config/connection.js');
 // Initialize Category model (table) by extending off Sequelize's Model class
 class Category extends Model {}
 
-// set up fields and rules for Category model
+// set up fields and rules for Category model/ references/ has many items
 Category.init(
     {
       id: {
@@ -19,6 +19,13 @@ Category.init(
       category_name: {
         type: DataTypes.STRING,
         allowNull: false
+      },
+      product_id: {                  
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'product',
+          key: 'id'
+        }
       }
     },
     {

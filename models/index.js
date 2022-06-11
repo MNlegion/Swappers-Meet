@@ -4,13 +4,16 @@ const Category = require('./Category');
 const User = require('./User');
 const Comment = require('./Comment');
 
+
+
 // model associations
 User.hasMany(Comment, {
   foreignKey: 'user_id',
 });
 
 Comment.belongsTo(User, {
-  foreignKey: 'user_id'
+  foreignKey: 'user_id',
+    onDelete: 'cascade'     
 });
 
 User.hasMany(Product, {
@@ -18,7 +21,8 @@ User.hasMany(Product, {
 });
 
 Product.belongsTo(User, {
-  foreignKey: 'user_id'
+  foreignKey: 'user_id',
+  onDelete: 'cascade'        
 });
 
 Product.hasMany(Comment, {
@@ -26,7 +30,8 @@ Product.hasMany(Comment, {
 });
 
 Comment.belongsTo(Product, {
-  foreignKey: 'product_id'
+  foreignKey: 'product_id',
+  onDelete: 'cascade'        
 });
 
 Category.hasMany(Product, {
