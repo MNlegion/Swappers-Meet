@@ -1,13 +1,14 @@
 const router = require('express').Router();
 const { User, Product, Comment, Category } = require('../../models');
 
-//create product////
+//create product---it works!!!!!!!!!!!!!!!!!!!!!!!!////
 router.post('/', (req, res) => {
-    Product.Create({
+    Product.create({
         product_name: req.body.product_name,
         description: req.body.description,
-        // category: //not sure how to link category, how are we setting up page?
-})
+        category_id: req.body.category_id
+        //category: not sure how to link category, how are we setting up page?
+    })
         .then(createProd => res.json(createProd))
         .catch(err => {
             console.log(err);
@@ -15,7 +16,7 @@ router.post('/', (req, res) => {
         });
 });
 
-//delete product, should delete any comments associated with ?//
+//delete product, should delete any comments associated with product? it works as of now!!!!!!!!!!!!!!!!!!!!!!!//
 router.delete('/:id', (req, res) => {
     Product.destroy({
         where: {
@@ -41,7 +42,7 @@ router.delete('/:id', (req, res) => {
 
 
 //get product by id and associated comments--when click on or displaying product//
-
+//works to get product but no comments because none are made!!!!!!!!!!!!!!!!!!
 router.get('/:id', (req, res) => {
     Product.findOne({
         where: {
