@@ -47,7 +47,7 @@ router.put('/:id', (req, res) => {
   });
   
 
-//get user----will display username and email---not sure about path name//
+//get user by id THIS WORKS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 router.get('/:id', (req, res) => {
     User.findOne({
         attributes: { exclude: ['password'] },
