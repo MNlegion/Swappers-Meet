@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const sequelize = require('../config/connection');
+
 
 //returns category with associated products//
 
