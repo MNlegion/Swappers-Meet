@@ -2,8 +2,8 @@ const router = require('express').Router();
 
 const { User, Product, Comment, Category} = require('../../models');
 
-//create user
-router.post('/signup', (req, res) => {
+//create user-----IT WORKS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+router.post('/user/signup', (req, res) => {
     User.create({
       username: req.body.username,
       email: req.body.email,
@@ -11,9 +11,9 @@ router.post('/signup', (req, res) => {
     })
       .then(userSignup => {
         req.session.save(() => {
-          req.session.user_id = userSignup.id;
-          req.session.username = userSignup.username;
-          req.session.loggedIn = true;
+          // req.session.user_id = userSignup.id;
+          // req.session.username = userSignup.username;
+          // req.session.loggedIn = true;
     
           res.json(userSignup);
         });
@@ -25,7 +25,7 @@ router.post('/signup', (req, res) => {
   });
   
 
-//update user---are we goign to have an update form for user? idt so//
+//update user---are we goign to have an update form for user email? idt so// BUT IT WORKS ANYWAYS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!S
 router.put('/:id', (req, res) => {
   User.update({
     email: req.body.email
