@@ -38,16 +38,14 @@
       </form>
 
       {{!-- RECENT POSTS --}}
+      {{#each products}}
 			<div class="card container-fluid style">
       <div class="card-body">
-        <h5 class="card-title">post title</h5>
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">{{products.product_name}}</h5>
+        <p class="card-text">{{products.description}}</p>
       </div>
 		</div>
+    {{/each}}
 		
 
     <script src="src/index.js"></script>
