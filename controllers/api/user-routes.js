@@ -25,7 +25,7 @@ router.post('/signup', (req, res) => {
 });
 
 
-//update user---are we goign to have an update form for user email? idt so// BUT IT WORKS ANYWAYS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!S
+//update user---are we going to have an update form for user email? idt so// BUT IT WORKS ANYWAYS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!S
 router.put('/:id', (req, res) => {
   User.update({
     email: req.body.email
