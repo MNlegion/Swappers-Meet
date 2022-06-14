@@ -21,22 +21,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <header>
-                    {{> nav}}
-                </header>
                 <main>
                     {{{ body }}}
                 </main>
-                <footer>
-
-                </footer>
             </div>
         </div>
     </div>
-
-    {{#if logged_in}}
-    <script src="/js/logout.js"></script>
-    {{/if}}
 </body>
 
 </html>
