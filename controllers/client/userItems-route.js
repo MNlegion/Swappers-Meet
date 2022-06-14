@@ -13,6 +13,10 @@ router.get('/', (req, res) => {
 
     Product.findAll({
         attributes: ['id', 'product_name', 'description', 'category_id', 'user_id'],
+        // where: {
+        //     // where user_id is equal to the logged in user id?
+        //     user_id: req.session.id
+        // },
         // order: [['created_at', 'DESC']],
         include: [
             {

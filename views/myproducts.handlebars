@@ -1,9 +1,19 @@
 <header>
     {{> nav}}
 </header>
-
-{{!-- HOLDS ALL PRODUCT DATA --}}
 <section>
-{{ dbproducts }}
+    <h2>Your Listings</h2>
+    <h3>Welcome to your listings! Below you can see all the items you've listed, any bids you've received, and have the option to mark any listings as "closed".</h3>
+</section>
+<section>
+    {{!-- ITERATES THROUGH ALL PRODUCT DATA --}}
+    {{#each dbproducts as |item| }}
+    <article>
+        <h4>{{item.product_name}}</h4>
+        <h5>{{item.description}}</h5>
+        <p>Category: {{item.category_id}}</p>
+        <button>Close Listing</button>
+    </article>
+    {{/each}}
 </section>
 
