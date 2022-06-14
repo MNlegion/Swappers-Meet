@@ -7,6 +7,7 @@ const sequelize = require('../config/connection.js');
 // Initialize Comments model (table) by extending off Sequelize's Model class
 class Comment extends Model {}
 
+const withAuth = require('../utils/auth');
 // set up fields and rules for Comments model
 Comment.init(
   {
