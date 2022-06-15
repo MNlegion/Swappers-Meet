@@ -40,8 +40,19 @@ const storage = multer.diskStorage({
     cb(null, Date.now()+file.originalname)
   }
 });
+//specifies only images as uploads and extension has to be jpeg, jpg or png//
+const fileFilter = (req, file, cb) => {
+  if(file.mimetpye ==='image/jpeg' || file.mimetype ==='image/jpg' || file.mimetype ==='image/png') {
+    cb (null, true);
+  }else {
+    cb (null, false);
+  }
+}
 
-
+const upload = multer ({
+  storage:storage,
+  fileFilter:fileFilter
+});
 
 //middleware
 // Set up custom helpers
