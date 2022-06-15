@@ -3,6 +3,7 @@ const { Product, User, Category } = require('../../models');
 
 
 router.get('/', (req, res) => {
+  
 
     // Posts FindAll limit 5 newest products
     Product.findAll({
@@ -13,6 +14,7 @@ router.get('/', (req, res) => {
     .then(dbProductData => {
         // pass a single post object ino the homepage template
         const products = dbProductData.map(product => product.get({ plain: true}));
+        
 
         res.render('home-page', {
           products,
