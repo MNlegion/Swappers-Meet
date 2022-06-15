@@ -103,23 +103,24 @@ const upload = multer ({
 });
 
 //post route for images//
-router.post("/uploadimage", upload.single("productImage"), (req, res) => 
-{
-    if (req.file)
-    {
-        const pathName= req.file.path;
-        res.status(201).send(req.file)
-    }
-});
+// router.post("/uploadimage", upload.single("productImage"), (req, res) => 
+// {
+//     if (req.file)
+//     {
+//         const pathName= req.file.path;
+//         res.status(201).send(req.file)
+//     }
+// });
 
 //create product---it works!!!!!!!!!!!!!!!!!!!!!!!!////
-router.post('/uploadimage', withAuth, upload.single("productImage"), (req, res) => {
+router.post('/',  upload.single("productImage"), withAuth, (req, res) => {
+    console.log("here")
     Product.create({
         product_name: req.body.product_name,
         description: req.body.description,
         category_id: req.body.category_id,
         user_id: req.session.user_id,
-        file_path: req.file.path
+        file_path: req.file.filename
         //category: not sure how to link category, and include username how are we setting up page?
     })
         .then(createProd => res.json(createProd))

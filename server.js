@@ -31,28 +31,6 @@ const sess = {
 
 app.use(session(sess));
 
-//declare where multer stores images--can use disk storage or memory storage//
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './public/uploads/')
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now()+file.originalname)
-  }
-});
-//specifies only images as uploads and extension has to be jpeg, jpg or png//
-const fileFilter = (req, file, cb) => {
-  if(file.mimetpye ==='image/jpeg' || file.mimetype ==='image/jpg' || file.mimetype ==='image/png') {
-    cb (null, true);
-  }else {
-    cb (null, false);
-  }
-}
-
-const upload = multer ({
-  storage:storage,
-  fileFilter:fileFilter
-});
 
 //middleware
 // Set up custom helpers
