@@ -1,22 +1,10 @@
 const router = require('express').Router();
+const { application } = require('express');
 const { User, Product, Comment, Category } = require('../../models');
 const withAuth = require('../../utils/auth');
+const multer = require('multer');
 
-//create product---it works!!!!!!!!!!!!!!!!!!!!!!!!////
-router.post('/', withAuth, (req, res) => {
-    Product.create({
-        product_name: req.body.product_name,
-        description: req.body.description,
-        category_id: req.body.category_id,
-        user_id: req.session.user_id
-        //category: not sure how to link category, and include username how are we setting up page?
-    })
-        .then(createProd => res.json(createProd))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-});
+
 
 //delete product, should delete any comments associated with product? it works as of now!!!!!!!!!!!!!!!!!!!!!!!//
 router.delete('/:id', (req, res) => {
@@ -94,6 +82,47 @@ router.get('/:id', (req, res) => {
         ]
     })
         .then(productData => res.json(productData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, './public/uploads')
+    },
+    filename: (req, file, cb) => {
+      cb(null, Date.now() + '-' + file.originalname)
+    }
+  })
+
+const upload = multer ({
+    storage: storage
+});
+
+//post route for images//
+router.post("/uploadimage", upload.single("productImage"), (req, res) => 
+{
+    if (req.file)
+    {
+        const pathName= req.file.path;
+        res.status(201).send(req.file)
+    }
+});
+
+//create product---it works!!!!!!!!!!!!!!!!!!!!!!!!////
+router.post('/uploadimage', withAuth, upload.single("productImage"), (req, res) => {
+    Product.create({
+        product_name: req.body.product_name,
+        description: req.body.description,
+        category_id: req.body.category_id,
+        user_id: req.session.user_id,
+        file_path: req.file.path
+        //category: not sure how to link category, and include username how are we setting up page?
+    })
+        .then(createProd => res.json(createProd))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
