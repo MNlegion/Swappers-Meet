@@ -3,6 +3,8 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const session = require('express-session');
+//require multer for images//
+const multer = require('multer');
 
 const helpers = require('./utils/helpers');
 const sequelize = require('./config/connection');
@@ -28,6 +30,17 @@ const sess = {
 };
 
 app.use(session(sess));
+
+//declare where multer stores images--can use disk storage or memory storage//
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/uploads/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now()+file.originalname)
+  }
+});
+
 
 
 //middleware
