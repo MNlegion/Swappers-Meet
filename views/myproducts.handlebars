@@ -17,12 +17,23 @@
                 Category: {{item.category.category_name}}
             </p>
         </div>
+        {{#if item.bids}}
+            <div class="row">
+                <h4 class="col-3 border-right">Bids</h4>
+                <ul class="col-19" style="list-style: none;">
+                    {{#each item.bids as |bid|}}
+                    <li>Bid from <span class="font-weight-bold">{{bid.user.username}}</span></li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/if}}
+
         {{#if item.comments}}
         <div class="row">
-            <h4 class="col-3 border-right">Bids</h4>
+            <h4 class="col-3 border-right">Comments</h4>
             <ul class="col-19" style="list-style: none;">
-                {{#each item.comments as |bid|}}
-                <li>Bid from <span class="font-weight-bold">{{bid.user.username}}</span>: {{bid.comment_text}}</li>
+                {{#each item.comments as |comment|}}
+                <li>Comment from <span class="font-weight-bold">{{comment.user.username}}</span>: {{comment.comment_text}}</li>
                 {{/each}}
             </ul>
         </div>

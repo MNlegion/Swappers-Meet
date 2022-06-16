@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Product, Category, User, Comment } = require('../../models');
+const { Product, Category, User, Comment, Bid } = require('../../models');
 
 // get all products from most recent to least recent
 router.get('/', (req, res) => {
@@ -26,6 +26,14 @@ router.get('/', (req, res) => {
             {
                 model: Comment,
                 attributes: ['id', 'comment_text', 'user_id'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+                model: Bid,
+                attributes: ['id'],
                 include: {
                     model: User,
                     attributes: ['username']
