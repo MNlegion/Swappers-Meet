@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Product, Category, User } = require('../../models');
-const sequelize = require('../../config/connection');
+// const sequelize = require('../../config/connection');
 
 // marketplace route  (/marketplace)
 router.get('/', (req, res) => {
