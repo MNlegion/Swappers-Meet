@@ -5,6 +5,7 @@ async function newProductHandler(event) {
     event.preventDefault();
   
     const product_name = document.querySelector('input[name="product-title"]').value;
+    const category_id = document.querySelector('input[name="product-category"]').value;
     const description = document.querySelector('input[name="description"]').value;
     const file_path = document.querySelector('input[name="image"]').value;
   
@@ -27,5 +28,5 @@ async function newProductHandler(event) {
     }
   }
   
-  document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
+  document.querySelector('.addProduct').addEventListener('submit', newProductHandler);
   
