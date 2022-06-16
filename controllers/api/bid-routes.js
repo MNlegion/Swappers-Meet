@@ -1,10 +1,7 @@
 const router = require('express').Router();
 const { Bid } = require('../../models');
 
-
-
-
-//find all comments-works but no seed data!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//find all bid
 router.get('/', (req, res) => {
     Bid.findAll()
       .then(dbBidData => res.json(dbBidData))
@@ -15,12 +12,12 @@ router.get('/', (req, res) => {
   });
   
 
-//create comment// we dont have product id in seeds, not sure if we want to set up route differently or add id to product
+//create bid//
 router.post('/', (req, res) => {
     // expects => {user_id: 1, product_id: 2}
     Bid.create({
-      user_id: req.session.user_id,
-      product_id: req.body.product_id  //
+      user_id: req.body.user,
+      product_id: req.body.product  //
     })
       .then(dbBidData => res.json(dbBidData))
       .catch(err => {
