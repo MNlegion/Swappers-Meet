@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
 });
 
 //single get?
-
+/*
 router.get("/", (req, res) => {
   Product.findOne({
     where: {
@@ -50,7 +50,7 @@ router.get("/", (req, res) => {
     });
   });
 });
-
+*/
 
 //login route
 router.post('/login', (req, res) => {
