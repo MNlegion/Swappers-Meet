@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
 
     Product.findAll({
         attributes: ['id', 'product_name', 'description', 'category_id'],
+        // order: [['created_at', 'DESC']],
         include: [
             {
                 model: User,
