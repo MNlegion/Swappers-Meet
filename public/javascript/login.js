@@ -1,13 +1,15 @@
-
-
-async function loginFormHandler(event) {
-    event.preventDefault();  
+async function loginButtonHandler(event) {
+    event.preventDefault();
+    console.log("logging in");
   
-    const email = document.querySelector('#email-login').value.trim();
-    const password = document.querySelector('#password-login').value.trim();
-  
-    if (email && password) {
-      const response = await fetch('/api/users/login', {
+    const email = document.querySelector('#formEmail').value.trim();
+    //const username = document.querySelector('#formName').value.trim();
+    const password = document.querySelector('#formPassword').value.trim();
+    
+    
+    if (email && password) {//need to make sure email and password are not null, otherwise takes to dashboard
+        console.log("check passed");
+      const response = await fetch('/api/user/login', {
         method: 'post',
         body: JSON.stringify({
           email,
@@ -17,41 +19,42 @@ async function loginFormHandler(event) {
       });
   
       if (response.ok) {
-        document.location.replace('/');
+        document.location.replace('/dashboard/');
       } else {
         alert(response.statusText);
       }
     }
   }
-
-
-  async function signupFormHandler(event) {
+  
+  async function signupButtonHandler(event) {
     event.preventDefault();
+    console.log("signing up");
+    
+    const email = document.querySelector('#formEmail').value.trim();
+    const username = document.querySelector('#formName').value.trim();
+    const password = document.querySelector('#formPassword').value.trim();
+    
   
-    const username = document.querySelector('#username-signup').value.trim();
-    const email = document.querySelector('#email-signup').value.trim();
-    const password = document.querySelector('#password-signup').value.trim();
-  
-    if (username && email && password) {
-      const response = await fetch('/api/users', {
+    if (email && password && username) {
+      const response = await fetch('/api/user/signup', {
         method: 'post',
         body: JSON.stringify({
           username,
           email,
           password
         }),
-        headers: { 'Content-Type': 'application/json' }  //API headers are like an extra source of information for each API call you make. Their job is to represent the meta-data associated with an API request and response.
+        headers: { 'Content-Type': 'application/json' }
       });
   
       if (response.ok) {
-        document.location.replace('/');
+        document.location.replace('/dashboard/');
       } else {
         alert(response.statusText);
       }
     }
   }
-
-
-document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
-
-document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
+  
+  document.querySelector('#button-login').addEventListener('click', loginButtonHandler);
+  
+  document.querySelector('#button-sign-up').addEventListener('click', signupButtonHandler);
+  
