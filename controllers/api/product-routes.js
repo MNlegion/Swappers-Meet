@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Product, Comment, Category } = require('../../models');
+const { User, Product, Comment, Category, Bid } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 //create product---it works!!!!!!!!!!!!!!!!!!!!!!!!////
@@ -53,6 +53,14 @@ router.get('/', (req, res) => {
                 }
             },
             {
+                model: Bid,
+                attributes: ['id'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
                 model: User,
                 attributes: ['username', 'email']
             },
@@ -82,6 +90,14 @@ router.get('/:id', (req, res) => {
             {
                 model: Comment,
                 attributes: ['id', 'comment_text'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+                model: Bid,
+                attributes: ['id'],
                 include: {
                     model: User,
                     attributes: ['username']
