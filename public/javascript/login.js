@@ -9,7 +9,7 @@ async function loginButtonHandler(event) {
     
     if (email && password) {//need to make sure email and password are not null, otherwise takes to dashboard
         console.log("check passed");
-      const response = await fetch('/api/users/login', {
+      const response = await fetch('/api/user-routes/login', {
         method: 'post',
         body: JSON.stringify({
           email,
@@ -36,7 +36,7 @@ async function loginButtonHandler(event) {
     
   
     if (email && password && username) {
-      const response = await fetch('/api/users', {
+      const response = await fetch('/api/user-routes/signup', {
         method: 'post',
         body: JSON.stringify({
           username,

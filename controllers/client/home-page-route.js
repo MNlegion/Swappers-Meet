@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
     .then(dbProductData => {
         // pass a single post object ino the homepage template
         const products = dbProductData.map(product => product.get({ plain: true}));
-        
+        //console.log(products.get({ plain: true }));
 
         res.render('home-page', {
           products,
@@ -25,6 +25,30 @@ router.get('/', (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
+});
+
+//single get?
+
+router.get("/", (req, res) => {
+  Product.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: [
+      "id",
+      "description"
+    ],
+  })
+  .then(dbProductData => {
+    if(!dbProductData) {return;}
+
+    const prod = dbProductData.get({ plain: true});
+
+    res.render("home-page", {
+      prod
+      
+    });
+  });
 });
 
 
