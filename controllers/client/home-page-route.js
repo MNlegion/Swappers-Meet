@@ -1,14 +1,55 @@
+const router = require('express').Router();
+const { Product, User, Category } = require('../../models');
+
+
 router.get('/', (req, res) => {
+  
 
     // Posts FindAll limit 5 newest products
-    // .then dbposts data set to variable
-
-    res.render('homepage', {
-        dbposts,
-        loggedIn: req.session.loggedIn
+    Product.findAll({
+      attributes: ['product_name', 'description'],
+      // order: [],
     })
+    // .then dbposts data set to variable
+    .then(dbProductData => {
+        // pass a single post object ino the homepage template
+        const products = dbProductData.map(product => product.get({ plain: true}));
+        //console.log(products.get({ plain: true }));
 
-})
+        res.render('home-page', {
+          products,
+          loggedIn: req.session.loggedIn
+      })  
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+//single get?
+
+router.get("/", (req, res) => {
+  Product.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: [
+      "id",
+      "description"
+    ],
+  })
+  .then(dbProductData => {
+    if(!dbProductData) {return;}
+
+    const prod = dbProductData.get({ plain: true});
+
+    res.render("home-page", {
+      prod
+      
+    });
+  });
+});
 
 
 //login route
@@ -41,3 +82,4 @@ router.post('/login', (req, res) => {
     });
   });
   
+module.exports = router;
