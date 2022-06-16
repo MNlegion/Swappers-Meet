@@ -4,8 +4,6 @@ const Category = require('./Category');
 const User = require('./User');
 const Comment = require('./Comment');
 
-
-
 // model associations
 User.hasMany(Comment, {
   foreignKey: 'user_id',
@@ -41,7 +39,6 @@ Category.hasMany(Product, {
 Product.belongsTo(Category, {
   foreignKey: "category_id"
 });
-
 
 
 // model exports
