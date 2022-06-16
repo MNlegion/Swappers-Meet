@@ -53,6 +53,14 @@ router.get('/', (req, res) => {
                 }
             },
             {
+                model: Bid,
+                attributes: ['id'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
                 model: User,
                 attributes: ['username', 'email']
             },
