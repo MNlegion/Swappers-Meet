@@ -33,12 +33,14 @@
             <input type="email" id="formEmail" class="form-control">
           </div>
           
-        </form>
+        
 
-        {{!-- SIGNUP --}}
-        <form>
-          <button type="button" class="btn btn-primary btn-lg" id="button-login">Login!</button>
-          <button type="button" class="btn btn-primary btn-lg" id="button-sign-up">Sign Up!</button>
+          {{!-- SIGNUP --}}
+          <form>
+            <button type="button" class="btn btn-primary btn-lg" id="button-login">Login!</button>
+            <button type="button" class="btn btn-primary btn-lg" id="button-sign-up">Sign Up!</button>
+          </form>
+        
         </form>
 
       </div>
@@ -50,12 +52,12 @@
     {{#each products}}
 			<div class="card container-fluid style">
         <div class="card-body">
-          <h5 class="card-title">{{products.product_name}}</h5>
-          <p class="card-text">{{products.description}}</p>
+          <h5 class="card-title">f{{products.product_name}}</h5>
+          <p class="card-text">{{products.description}}l</p>
         </div>
 		  </div>
     {{/each}}
-		
+		<h5 class="card-title">d{{prod.id}} k</h5>
 
   <script src="/javascript/login.js"></script> <!--handles both LOGIN and SIGNUP button-->
 
