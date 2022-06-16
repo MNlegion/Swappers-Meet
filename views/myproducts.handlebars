@@ -3,15 +3,20 @@
 </header>
 <section>
     <h2>Your Listings</h2>
-    <h3>Welcome to your listings! Below you can see all the items you've listed, any bids you've received, and have the option to mark any listings as "closed".</h3>
+    <p>Welcome to your listings! Below you can see all the items you've listed, any bids you've received, and have the option to mark any listings as "closed".</p>
 </section>
 <section>
     {{!-- ITERATES THROUGH ALL PRODUCT DATA --}}
     {{#each dbproducts as |item| }}
     <article>
-        <h4>{{item.product_name}}</h4>
-        <h5>{{item.description}}</h5>
-        <p>Category: {{item.category_id}}</p>
+        <h3>{{item.product_name}}</h3>
+        <p>{{item.description}}</p>
+        <p>Category: {{item.category.category_name}}</p>
+        <ul>
+            {{#each item.comments as |bid|}}
+            <li>{{bid.comment_text}} / Bid from {{bid.user.username}}</li>
+            {{/each}}
+        </ul>
         <button>Close Listing</button>
     </article>
     {{/each}}

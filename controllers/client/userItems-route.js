@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Product, Category, User } = require('../../models');
+const { Product, Category, User, Comment } = require('../../models');
 
 // get all products from most recent to least recent
 router.get('/', (req, res) => {
@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
     // }
 
     Product.findAll({
-        attributes: ['id', 'product_name', 'description', 'category_id', 'user_id'],
+        attributes: ['id', 'product_name', 'description'],
         // where: {
         //     // where user_id is equal to the logged in user id?
         //     user_id: req.session.id
@@ -22,6 +22,14 @@ router.get('/', (req, res) => {
             {
                 model: User,
                 attributes: ['username']
+            },
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'user_id'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
             },
             {
                 model: Category,
