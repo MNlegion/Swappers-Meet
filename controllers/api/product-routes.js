@@ -114,7 +114,6 @@ const upload = multer ({
 
 //create product---it works!!!!!!!!!!!!!!!!!!!!!!!!////
 router.post('/',  upload.single("productImage"), withAuth, (req, res) => {
-    console.log("here")
     Product.create({
         product_name: req.body.product_name,
         description: req.body.description,

@@ -6,26 +6,26 @@
     <p class="text-center"></p>
 </section>
 <section>
-    <form class="d-flex flex-column">
+    <form class="d-flex flex-column" >
         <div class=" form-group has-error">
             <label for="formName">Your Product</label>
             <input type="text" id="formName" class="form-control" name="product-title">
         </div>
 
         <div class=" form-group">
-            <label for="formCat">Product Category</label>
-            <input type='text' id="formCat" class="form-control" name="product-category">
+            <p>Choose your Products Category</p>
+            <input type="radio" id="Outdoor" name="product-category" value="Outdoor">
+            <label for="Outdoor">Outdoor</label><br>
+            <input type="radio" id="Furniture" name="product-category" value="Furniture">
+            <label for="Furniture">Furniture</label><br>
+            <input type="radio" id="Decor" name="product-category" value="Decor">
+            <label for="Decor">Decor</label>
         </div>
 
         <div class=" form-group">
-            <input type="radio" id="html" name="product-category" value="HTML">
-            <label for="html">HTML</label><br>
-            <input type="radio" id="css" name="product-category" value="CSS">
-            <label for="css">CSS</label><br>
-            <input type="radio" id="javascript" name="product-category" value="JavaScript">
-            <label for="javascript">JavaScript</label>
+            <label for="formDes">Product Description</label>
+            <input type='text' id="formDes" class="form-control" name="description">
         </div>
-
 
         <div class=" form-group">
             <label for="formFile">Image file</label>
@@ -33,10 +33,9 @@
         </div>
 
 
-        <form>
-            <button type="button" class="btn btn-primary btn-lg" id="button-addProduct">Add Product</button>
+        <button type="submit" class="btn btn-primary btn-lg" id="button-addProduct">Add Product</button>
 
-        </form>
+
 
     </form>
 

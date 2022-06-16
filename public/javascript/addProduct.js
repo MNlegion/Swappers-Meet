@@ -8,18 +8,21 @@ async function newProductHandler(event) {
     const category_id = document.querySelector('input[name="product-category"]').value;
     const description = document.querySelector('input[name="description"]').value;
     const file_path = document.querySelector('input[name="image"]').value;
+    console.log("Here")
   
     const response = await fetch(`/api/product`, {
       method: 'POST',
       body: JSON.stringify({
         product_name,
+        category_id,
         description,
         file_path
       }),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'multipart/form-data'
       }
     });
+    
   
     if (response.ok) {
       document.location.replace('/dashboard');
@@ -28,5 +31,5 @@ async function newProductHandler(event) {
     }
   }
   
-  document.querySelector('.addProduct').addEventListener('submit', newProductHandler);
+  document.querySelector('#button-addProduct').addEventListener('submit', newProductHandler);
   
