@@ -10,14 +10,15 @@ async function bidHandler(event) {
 
         // then grab product id associated with button
         const product = event.target.getAttribute('data-product'); // capture product associated with bid button
-        console.log(product)
-        console.log(user + " helloooooo " + product);
+        // post request to send necessary user information to create new bid
+
+        const response = await fetch('/api/')
+
     } else {
         console.log('no product')
     }
 
     // get request for user information
-    // post request to send necessary user information to create new bid
 };
 
 

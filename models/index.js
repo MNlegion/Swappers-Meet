@@ -3,6 +3,7 @@ const Product = require('./Product');
 const Category = require('./Category');
 const User = require('./User');
 const Comment = require('./Comment');
+const Bid = require('./Bid');
 
 // model associations
 User.hasMany(Comment, {
@@ -40,6 +41,22 @@ Product.belongsTo(Category, {
   foreignKey: "category_id"
 });
 
+// bid associations
+Bid.belongsTo(Product, {
+  foreignKey: 'product_id'
+});
+
+Bid.belongsTo(User, {
+  foreignKey: 'user_id'
+});
+
+Product.hasMany(Bid, {
+  foreignKey: 'product_id'
+});
+
+User.hasMany(Bid, {
+  foreignKey: 'user_id'
+});
 
 // model exports
 module.exports = {
@@ -47,4 +64,5 @@ module.exports = {
     Category,
     User,
     Comment,
+    Bid
   };
