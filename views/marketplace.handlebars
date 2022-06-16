@@ -1,7 +1,22 @@
 <header>
     {{> nav}}
 </header>
-
-<main>
-    <h2>Welcome to the Marketplace!</h2>
-</main>
+<section class="mt-3">
+    <h2 class="text-center">Welcome To The MarketPlace</h2>
+    <p class="text-center">Welcome to your listings! Below you can see all the items you've listed, any bids you've received, and have the option to mark any listings as "closed".</p>
+</section>
+<section>
+    {{!-- ITERATES THROUGH ALL PRODUCT DATA --}}
+    {{#each dbproducts as |item| }}
+    <article class="card m-2 p-2">
+        <h3 class="card-title text-dark">{{item.product_name}}</h3>
+        <div class="card-text text-dark p-2 mb-1">
+            <p>
+                Descripton: {{item.description}}
+                <br />
+                Category: {{item.category.category_name}}
+            </p>
+        </div>
+    </article>
+    {{/each}}
+</section>
