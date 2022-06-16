@@ -49,15 +49,16 @@
       
 
       {{!-- RECENT POSTS --}}
-    {{#each products}}
+      
+    {{#each products as |item|}}
 			<div class="card container-fluid style">
         <div class="card-body">
-          <h5 class="card-title">f{{products.product_name}}</h5>
-          <p class="card-text">{{products.description}}l</p>
+          <h5 class="card-title">{{item.product_name}}</h5>
+          <p class="card-text">{{item.description}}</p>
         </div>
 		  </div>
     {{/each}}
-		<h5 class="card-title">d{{prod.id}} k</h5>
+		
 
   <script src="/javascript/login.js"></script> <!--handles both LOGIN and SIGNUP button-->
 
