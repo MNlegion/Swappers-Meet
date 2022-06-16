@@ -27,7 +27,12 @@ router.get('/', (req, res) => {
     })
     .then(dbProductData => {
         const products = dbProductData.map(product => product.get({ plain: true }));
-        res.render('marketplace', { products });
+        res.render('marketplace', {
+            products,
+            loggedIn: req.session.loggedIn,
+            user: req.session.user_id,
+            username: req.session.username
+        });
     })
     .catch(err => {
         console.log(err);
