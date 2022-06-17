@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     // }
 
     Product.findAll({
-        attributes: ['id', 'product_name', 'description', 'category_id'],
+        attributes: ['id', 'product_name', 'description', 'category_id', 'file_path'],
         include: [
             {
                 model: User,
