@@ -13,15 +13,10 @@ router.get('/', (req, res) => {
     // }
 
     Product.findAll({
-<<<<<<< HEAD
-        attributes: ['id', 'product_name', 'description', 'category_id'],
-        // order: [['created_at', 'DESC']],
-=======
         attributes: ['id', 'product_name', 'description', 'category_id', 'file_path'],
         where: {
             isClosed: false
         },
->>>>>>> 03d5cb429d8f7a7a5ab6780bd55025d7b901e664
         include: [
             {
                 model: User,
