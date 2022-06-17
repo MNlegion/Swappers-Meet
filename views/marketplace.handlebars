@@ -12,7 +12,7 @@
     {{!-- ITERATES THROUGH ALL PRODUCT DATA --}}
     {{#each products as |item| }}
     <article class="row m-2 p-2 border border-primary rounded">
-        <div class="col-4">
+        <div class="col-12 col-lg-4">
             <!-- added the image display -->
             {{#if item.file_path}}
             <img src="/uploads/{{item.file_path}}" width="300px"; />
@@ -20,7 +20,7 @@
             <h3 class="text-center font-italic">Image <br> Coming <br> Soon</h3>
             {{/if}}
         </div>
-        <div class="col-6 card m-2 p-2">
+        <div class="col-12 col-lg-6 card m-2 p-2">
             <h3 class="card-title text-dark">{{item.product_name}}</h3>
             <div class="card-text text-dark p-2 mb-1">
                 <p>
