@@ -15,11 +15,12 @@ router.get('/', (req, res) => {
             // where user_id is equal to logged in user
             user_id: req.session.user_id
         },
-        order: [['created_at', 'DESC']],
         include: [
             {
                 model: Product,
                 attributes: ['id', 'product_name', 'description', 'isClosed', 'category_id', 'user_id', 'file_path'],
+                group: 'isClosed',
+                // order: [['createdAt', 'DESC']],
                 include: [
                     {
                         model: User,
