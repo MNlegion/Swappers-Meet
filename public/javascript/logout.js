@@ -1,5 +1,8 @@
-async function logout() {
-    const response = await fetch('/api/users/logout', {
+async function logoutHandler(event) {
+    event.preventDefault();
+    console.log('logging out');
+
+    const response = await fetch('/api/user/logout', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' }
     });
@@ -8,6 +11,8 @@ async function logout() {
     } else {
       alert(response.statusText);
     }
-  }
-document.querySelector('#logout').addEventListener('click', logout);
+};
+
+
+document.querySelector('#logout').addEventListener('click', logoutHandler);
 // click event handler that calls the logout route
