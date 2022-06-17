@@ -12,7 +12,7 @@
             <input type="text" id="formName" class="form-control" name="product-title">
         </div>
 
-        <div class=" form-group">
+        {{!-- <div class=" form-group">
             <p>Choose your Products Category</p>
             <input type="radio" id="Outdoor" name="product-category" value="Outdoor">
             <label for="Outdoor">Outdoor</label><br>
@@ -20,8 +20,17 @@
             <label for="Furniture">Furniture</label><br>
             <input type="radio" id="Decor" name="product-category" value="Decor">
             <label for="Decor">Decor</label>
+        </div> --}}
+        <div class=" form-group ">
+         <p>Choose your Products Category</p>
+         <div class="form-check">
+        {{#each categories as |frog|}}
+            <input class='form-check-input' type="radio" id={{frog.id}} name="product-category" value={{frog.category_name}}>
+            <label class='form-check-label'for={{frog.id}}>{{frog.category_name}}</label><br>
+        {{/each}}
         </div>
-
+        </div>
+        
         <div class=" form-group">
             <label for="formDes">Product Description</label>
             <input type='text' id="formDes" class="form-control" name="description">
