@@ -12,13 +12,15 @@ async function closeProductHandler(event) {
 
         // then grab product id associated with button
         const product = event.target.getAttribute('data-product'); // capture product associated with close button
+        console.log(product);
+        const apiurl = `/api/product/${product}`
 
         // post request to send necessary user information to create new bid
-        const response = await fetch('/api/product/:id', {
+        const response = await fetch(apiurl, {
             method: 'put',
-            body: JSON.stringify({
-                product
-            }),
+            // body: JSON.stringify({
+            //     product
+            // }),
             headers: { 'Content-Type': 'application/json' }
         });
 

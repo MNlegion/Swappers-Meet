@@ -10,7 +10,6 @@ router.get('/', (req, res) => {
         return;
     }
 
-
     Product.findAll({
         attributes: ['id', 'product_name', 'description', 'isClosed', 'category_id', 'user_id'],
         where: {

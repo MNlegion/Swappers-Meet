@@ -134,12 +134,13 @@ router.get('/:id', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-    Product.update({
-        isClosed: true,
+    let value = { isClosed: true };
+    let selector = { 
         where: {
-            id: req.body.id
-        }
-    })
+            id: req.params.id 
+        }};
+
+    Product.update(value, selector)
     .then(dbProductData => {
         if (!dbProductData) {
             res.status(404).json({ message: 'No product found with this id' });
