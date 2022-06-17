@@ -14,6 +14,9 @@ router.get('/', (req, res) => {
 
     Product.findAll({
         attributes: ['id', 'product_name', 'description', 'category_id', 'file_path'],
+        where: {
+            isClosed: false
+        },
         include: [
             {
                 model: User,
