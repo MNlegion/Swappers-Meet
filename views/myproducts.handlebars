@@ -7,56 +7,67 @@
 </section>
 <section id="close-listing-listener">
     {{!-- ITERATES THROUGH ALL PRODUCT DATA --}}
+   {{#if dbproducts}}
+
+   {{!-- IF YOU HAVE OPEN LISTINGS RENDER THEM --}}
     {{#each dbproducts as |item| }}
-    <article class="row m-2 p-2 border border-primary rounded">
-        <div class="col-12 col-lg-4">
-            <!-- added the image display -->
-            {{#if item.file_path}}
-            <img src="/uploads/{{item.file_path}}" width="300px"; />
-            {{else}}
-            <h3 class="text-center font-italic">Image <br> Coming <br> Soon</h3>
-            {{/if}}
-        </div>
-        <div class="col-12 col-lg-6 card m-2 p-2">
-            <h3 class="card-title text-dark">{{item.product_name}}</h3>
-            <div class="card-text text-dark p-2 mb-1">
-                <p>
-                    Descripton: {{item.description}}
-                    <br />
-                    Category: {{item.category.category_name}}
-                    <br />
-                    {{!-- <!-- added the image display -->
-                    <img src="/uploads/{{item.file_path}}" width="300px"; /> --}}
-                </p>
-            </div>
-
-            {{!-- BID DATA --}}
-            {{#if item.bids}}
-                <div class="row">
-                    <h4 class="col-3 border-right">Bids</h4>
-                    <ul class="col-19" style="list-style: none;">
-                        {{#each item.bids as |bid|}}
-                        <li>Bid from <span class="font-weight-bold">{{bid.user.username}}</span></li>
-                        {{/each}}
-                    </ul>
+            <article class="row m-2 p-2 border border-primary rounded">
+                <div class="col-12 col-lg-4">
+                    <!-- added the image display -->
+                    {{#if item.file_path}}
+                    <img src="/uploads/{{item.file_path}}" width="300px"; />
+                    {{else}}
+                    <h3 class="text-center font-italic">Image <br> Coming <br> Soon</h3>
+                    {{/if}}
                 </div>
-            {{/if}}
+                <div class="col-12 col-lg-6 card m-2 p-2">
+                    <h3 class="card-title text-dark">{{item.product_name}}</h3>
+                    <div class="card-text text-dark p-2 mb-1">
+                        <p>
+                            Descripton: {{item.description}}
+                            <br />
+                            Category: {{item.category.category_name}}
+                            <br />
+                            {{!-- <!-- added the image display -->
+                            <img src="/uploads/{{item.file_path}}" width="300px"; /> --}}
+                        </p>
+                    </div>
 
-            {{!-- COMMENT DATA --}}
-            {{#if item.comments}}
-            <div class="row">
-                <h4 class="col-3 border-right">Comments</h4>
-                <ul class="col-19" style="list-style: none;">
-                    {{#each item.comments as |comment|}}
-                    <li>Comment from <span class="font-weight-bold">{{comment.user.username}}</span>: {{comment.comment_text}}</li>
-                    {{/each}}
-                </ul>
-            </div>
-            {{/if}}
-            <button id="close-listing" data-product="{{item.id}}" class="btn btn-primary p-2">Close Listing</button>
-        </div>
+                    {{!-- BID DATA --}}
+                    {{#if item.bids}}
+                        <div class="row">
+                            <h4 class="col-3 border-right">Bids</h4>
+                            <ul class="col-19" style="list-style: none;">
+                                {{#each item.bids as |bid|}}
+                                <li>Bid from <span class="font-weight-bold">{{bid.user.username}}</span></li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    {{/if}}
+
+                    {{!-- COMMENT DATA --}}
+                    {{#if item.comments}}
+                    <div class="row">
+                        <h4 class="col-3 border-right">Comments</h4>
+                        <ul class="col-19" style="list-style: none;">
+                            {{#each item.comments as |comment|}}
+                            <li>Comment from <span class="font-weight-bold">{{comment.user.username}}</span>: {{comment.comment_text}}</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                    {{/if}}
+                    <button id="close-listing" data-product="{{item.id}}" class="btn btn-primary p-2">Close Listing</button>
+                </div>
+            </article>
+        {{/each}}
+
+    {{!-- ELSE IF NO OPEN LISTINGS RENDER THIS SECTION --}}
+   {{else}}
+    <article class="row m-2 p-2 border border-warning rounded justify-content-center">
+        <h3 class="text-center">All your listings are currently closed. Please add a new product to see it displayed here.</h3>
+        <a href='/addproduct' class="btn btn-primary p-2">To add new item >> </a>
     </article>
-    {{/each}}
+    {{/if}}
 </section>
 
 <script src="/javascript/closeProduct.js"></script>
