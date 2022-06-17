@@ -19,19 +19,19 @@
       <li class="nav-item">
         <a class="nav-link text-warning" href="/dashboard">Dashboard</a>
       </li>
-      {{#if logged_in}}
+      {{#if loggedIn}}
         <li class="nav-item">
           <a class="nav-link text-warning" id="logout">Logout</a>
         </li>
       {{else}}
         <li class="nav-item">
-          <a class="nav-link text-warning" href="/login">Login</a>
+          <a class="nav-link text-warning" href="/">Login</a>
         </li>
       {{/if}}
     </ul>
   </div>
 </nav>
 
-{{#if logged_in}}
-<script src="/js/logout.js"></script>
+{{#if loggedIn}}
+<script src="/javascript/logout.js"></script>
 {{/if}}

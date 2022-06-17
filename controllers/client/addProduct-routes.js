@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
     })
     .then( dbcategory => {
         const categories = dbcategory.map(category => category.get({ plain: true }));
-        res.render("addProduct", { categories })
+        res.render("addProduct", { categories, loggedIn: req.session.loggedIn })
     })
     .catch(err => {
         console.log(err);
