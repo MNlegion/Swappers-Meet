@@ -3,51 +3,53 @@
 </header>
 
 <main>
-<h2>Welcome to your Dashboard!</h2>
-<h3>What would you like to do?</h3>
+<h2 class="text-center pt-1 mt-2">Welcome to your Dashboard!</h2>
+<h3 class="text-center pb-1 mb-2">What would you like to do?</h3>
 
-{{!-- GO TO MARKETPLACE --}}
-<a class='text-decoration-none' href='/marketplace'>
-    <div class="card m-1 p-1" style="width: 18rem;">
-    <div class="card-body">
-        <h4 class="card-title text-dark">View Marketplace</h4>
-        <p class="card-text text-dark p-2 mb-1">Head to the marketplace to browse items and see what's new!</p>
-        <a href='/marketplace' class="btn btn-primary p-2">To marketplace >> </a>
-    </div>
-    </div>
-</a>
+<section class="row justify-content-center">
+    {{!-- GO TO MARKETPLACE --}}
+    <a class='text-decoration-none' href='/marketplace'>
+        <div class="col-12 col-md-5 card m-1 p-1">
+        <div class="card-body">
+            <h4 class="card-title text-dark">View Marketplace</h4>
+            <p class="card-text text-dark p-2 mb-1">Head to the marketplace to browse items and see what's new!</p>
+            <a href='/marketplace' class="btn btn-primary p-2">To marketplace >> </a>
+        </div>
+        </div>
+    </a>
 
-{{!-- SEE YOUR PRODUCTS --}}
-<a class='text-decoration-none' href='/myproducts'>
-    <div class="card m-1 p-1" style="width: 18rem;">
-    <div class="card-body">
-        <h4 class="card-title text-dark">View Your Listings</h4>
-        <p class="card-text text-dark p-2 mb-1">See all your listings and bids.</p>
-        <a href='/myproducts' class="btn btn-primary p-2">To listings >> </a>
-    </div>
-    </div>
-</a>
+    {{!-- SEE YOUR PRODUCTS --}}
+    <a class='text-decoration-none' href='/myproducts'>
+        <div class="col-12 col-md-5 card m-1 p-1" style="width: 18rem;">
+        <div class="card-body">
+            <h4 class="card-title text-dark">View Your Listings</h4>
+            <p class="card-text text-dark p-2 mb-1">See all your listings and bids.</p>
+            <a href='/myproducts' class="btn btn-primary p-2">To listings >> </a>
+        </div>
+        </div>
+    </a>
 
-{{!-- SEE YOUR BIDS --}}
-<a class='text-decoration-none' href='/bids'>
-    <div class="card m-1 p-1" style="width: 18rem;">
-    <div class="card-body">
-        <h4 class="card-title text-dark">View Your Bids</h4>
-        <p class="card-text text-dark p-2 mb-1">See all the items you've bid on.</p>
-        <a href='/bids' class="btn btn-primary p-2">To bids >> </a>
-    </div>
-    </div>
-</a>
+    {{!-- SEE YOUR BIDS --}}
+    <a class='text-decoration-none' href='/bids'>
+        <div class="col-12 col-md-5 card m-1 p-1" style="width: 18rem;">
+        <div class="card-body">
+            <h4 class="card-title text-dark">View Your Bids</h4>
+            <p class="card-text text-dark p-2 mb-1">See all the items you've bid on.</p>
+            <a href='/bids' class="btn btn-primary p-2">To bids >> </a>
+        </div>
+        </div>
+    </a>
 
-{{!-- ADD A NEW PRODCUT --}}
-<a class='text-decoration-none' href='/addproduct'>
-    <div class="card m-1 p-1" style="width: 18rem;">
-    <div class="card-body">
-        <h4 class="card-title text-dark">List New Item</h4>
-        <p class="card-text text-dark p-2 mb-1">Want to add another item to the marketplace? List it here!</p>
-        <a href='/addproduct' class="btn btn-primary p-2">To add new >> </a>
-    </div>
-    </div>
-</a>
+    {{!-- ADD A NEW PRODCUT --}}
+    <a class='text-decoration-none' href='/addproduct'>
+        <div class="col-12 col-md-5 card m-1 p-1" style="width: 18rem;">
+        <div class="card-body">
+            <h4 class="card-title text-dark">List New Item</h4>
+            <p class="card-text text-dark p-2 mb-1">Want to add another item to the marketplace? List it here!</p>
+            <a href='/addproduct' class="btn btn-primary p-2">To add new >> </a>
+        </div>
+        </div>
+    </a>
+</section>
 </main>
 
