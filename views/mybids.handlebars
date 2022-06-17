@@ -8,6 +8,8 @@
 </section>
 <section>
     {{#each bids as |bid|}}
+
+    {{!-- STYLING FOR CLOSED PRODUCTS --}}
         {{#if bid.product.isClosed}}
         <article class="row m-2 p-2 border border-light bg-secondary rounded">
                 <div class="col-12 col-lg-4">
@@ -32,6 +34,8 @@
                 </div>
             </article>
         {{else}}
+
+        {{!-- STYLING FOR OPEN PRODUCTS --}}
             <article class="row m-2 p-2 border border-primary rounded">
                 <div class="col-12 col-lg-4">
                     {{!-- IMAGES WILL DISPLAY HERE --}}
