@@ -3,33 +3,24 @@ console.log("addProduct.js connected");
 
 async function newProductHandler(event) {
     event.preventDefault();
-  
-    const product_name = document.querySelector('input[name="product-title"]').value;
-    const category_id = document.querySelector('input[name="product-category"]').value;
-    const description = document.querySelector('input[name="description"]').value;
-    const file_path = document.querySelector('input[name="image"]').value;
-    console.log("Here")
-  
+
+    const formdata = new FormData(event.target.form);
+//passed form data instead of json data to allow images
+// Accept */* instead of just json
     const response = await fetch(`/api/product`, {
-      method: 'POST',
-      body: JSON.stringify({
-        product_name,
-        category_id,
-        description,
-        file_path
-      }),
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
+        method: 'POST',
+        body: formdata,
+        headers: {
+            'Accept': '*/*'
+        }
     });
-    
-  
+
+
     if (response.ok) {
-      document.location.replace('/dashboard');
+        document.location.replace('/dashboard');
     } else {
-      alert(response.statusText);
+        alert(response.statusText);
     }
-  }
-  
-  document.querySelector('#button-addProduct').addEventListener('click', newProductHandler);
-  
+}
+
+document.querySelector('#button-addProduct').addEventListener('click', newProductHandler);

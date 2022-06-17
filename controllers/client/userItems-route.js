@@ -12,7 +12,8 @@ router.get('/', (req, res) => {
     // }
 
     Product.findAll({
-        attributes: ['id', 'product_name', 'description'],
+        // Added the file_path attribute to be passed to display images
+        attributes: ['id', 'product_name', 'description', 'file_path'],
         // where: {
         //     // where user_id is equal to the logged in user id?
         //     user_id: req.session.id

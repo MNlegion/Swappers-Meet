@@ -120,7 +120,7 @@ router.post('/',  upload.single("productImage"), withAuth, (req, res) => {
         category_id: req.body.category_id,
         user_id: req.session.user_id,
         file_path: req.file.filename
-        //category: not sure how to link category, and include username how are we setting up page?
+    
     })
         .then(createProd => res.json(createProd))
         .catch(err => {
