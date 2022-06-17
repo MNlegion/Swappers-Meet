@@ -24,6 +24,11 @@ Product.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    isClosed: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
+    },
     category_id: {
       type: DataTypes.INTEGER,
       references: {
