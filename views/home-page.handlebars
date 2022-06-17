@@ -15,34 +15,59 @@
       {{!-- SIGNUP AND LOGIN FORMS --}}
       <div class="col-5 d-flex flex-row border-left">
 
-        {{!-- LOGIN --}}
-        <form class="d-flex flex-column">
-          <div class=" form-group has-error">
-            <label for="formName">Your name</label>
-            <input type="text" id="formName" class="form-control">
-          </div>
+        <div class="d-flex flex-column">
 
-          <div class=" form-group">
-            <label for="formPassword">Password</label>
-            <input type="password" id="formPassword" class="form-control">
-          </div>
+          {{!-- LOGIN --}}
+          <form class="d-flex flex-column">
 
+            
+            
+            <div class=" form-group">
+              <label for="formEmail">Email address</label>
+              <input type="email" id="formEmailLogin" class="form-control">
+            </div>
+            
+            <div class=" form-group">
+              <label for="formPassword">Password</label>
+              <input type="password" id="formPasswordLogin" class="form-control">
+            </div>
           
-          <div class=" form-group">
-            <label for="formEmail">Email address</label>
-            <input type="email" id="formEmail" class="form-control">
-          </div>
+
+            {{!-- LOGIN BUTTON --}}
+            <form>
+              <button type="button" class="btn btn-primary btn-lg" id="button-login">Login!</button>
+              
+            </form>
           
-        
+          </form>
 
           {{!-- SIGNUP --}}
-          <form>
-            <button type="button" class="btn btn-primary btn-lg" id="button-login">Login!</button>
-            <button type="button" class="btn btn-primary btn-lg" id="button-sign-up">Sign Up!</button>
-          </form>
-        
-        </form>
+          <form class="d-flex flex-column">
+            <div class=" form-group has-error">
+              <label for="formName">Your name</label>
+              <input type="text" id="formName" class="form-control">
+            </div>
 
+            <div class=" form-group">
+              <label for="formPassword">Password</label>
+              <input type="password" id="formPassword" class="form-control">
+            </div>
+
+            
+            <div class=" form-group">
+              <label for="formEmail">Email address</label>
+              <input type="email" id="formEmail" class="form-control">
+            </div>
+            
+          
+
+            {{!-- SIGNUP BUTTON --}}
+            <form>
+              <button type="button" class="btn btn-primary btn-lg" id="button-sign-up">Sign Up!</button>
+            </form>
+          
+          </form>
+        </div>
       </div>
       
     </section>

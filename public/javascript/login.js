@@ -2,9 +2,9 @@ async function loginButtonHandler(event) {
     event.preventDefault();
     console.log("logging in");
   
-    const email = document.querySelector('#formEmail').value.trim();
+    const email = document.querySelector('#formEmailLogin').value.trim();
     //const username = document.querySelector('#formName').value.trim();
-    const password = document.querySelector('#formPassword').value.trim();
+    const password = document.querySelector('#formPasswordLogin').value.trim();
     
     
     if (email && password) {//need to make sure email and password are not null, otherwise takes to dashboard
