@@ -3,6 +3,8 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const session = require('express-session');
+//require multer for images//
+const multer = require('multer');
 
 const helpers = require('./utils/helpers');
 const sequelize = require('./config/connection');

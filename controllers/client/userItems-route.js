@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     }
 
     Product.findAll({
-        attributes: ['id', 'product_name', 'description', 'isClosed', 'category_id', 'user_id'],
+        attributes: ['id', 'product_name', 'description', 'isClosed', 'category_id', 'user_id', 'file_path'],
         where: {
             // where user_id is equal to the logged in user id?
             user_id: req.session.user_id,
