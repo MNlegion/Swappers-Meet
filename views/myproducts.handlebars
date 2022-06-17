@@ -5,7 +5,7 @@
     <h2 class="text-center">Your Listings</h2>
     <p class="text-center">Welcome to your listings! Below you can see all the items you've listed, any bids you've received, and have the option to mark any listings as "closed".</p>
 </section>
-<section>
+<section id="close-listing-listener">
     {{!-- ITERATES THROUGH ALL PRODUCT DATA --}}
     {{#each dbproducts as |item| }}
     <article class="card m-2 p-2">
@@ -20,20 +20,34 @@
                 <img src="/uploads/{{item.file_path}}" width:100px; />
             </p>
         </div>
+
+        {{!-- BID DATA --}}
+        {{#if item.bids}}
+            <div class="row">
+                <h4 class="col-3 border-right">Bids</h4>
+                <ul class="col-19" style="list-style: none;">
+                    {{#each item.bids as |bid|}}
+                    <li>Bid from <span class="font-weight-bold">{{bid.user.username}}</span></li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/if}}
+
+        {{!-- COMMENT DATA --}}
         {{#if item.comments}}
         <div class="row">
-            <h4 class="col-3 border-right">Bids</h4>
+            <h4 class="col-3 border-right">Comments</h4>
             <ul class="col-19" style="list-style: none;">
-                {{#each item.comments as |bid|}}
-                <li>Bid from <span class="font-weight-bold">{{bid.user.username}}</span>: {{bid.comment_text}}</li>
+                {{#each item.comments as |comment|}}
+                <li>Comment from <span class="font-weight-bold">{{comment.user.username}}</span>: {{comment.comment_text}}</li>
                 {{/each}}
             </ul>
         </div>
         {{/if}}
-        <button id="close-listing" class="btn btn-primary p-2">Close Listing</button>
+        <button id="close-listing" data-product="{{item.id}}" class="btn btn-primary p-2">Close Listing</button>
     </article>
     {{/each}}
 </section>
 
-{{!-- <script src="/javascript/closeProduct.js"></script> --}}
+<script src="/javascript/closeProduct.js"></script>
 
