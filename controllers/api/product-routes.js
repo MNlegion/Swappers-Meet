@@ -3,28 +3,12 @@ const { User, Product, Comment, Category, Bid } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 //create product---it works!!!!!!!!!!!!!!!!!!!!!!!!////
-router.post('/', withAuth, (req, res) => {
-    Product.create({
-        product_name: req.body.product_name,
-        description: req.body.description,
-        category_id: req.body.category_id,
-        user_id: req.session.user_id
-        //category: not sure how to link category, and include username how are we setting up page?
-    })
-        .then(createProd => res.json(createProd))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-});
-
-// for testing purposes
-// router.post('/', (req, res) => {
+// router.post('/', withAuth, (req, res) => {
 //     Product.create({
 //         product_name: req.body.product_name,
 //         description: req.body.description,
 //         category_id: req.body.category_id,
-//         user_id: req.body.user_id
+//         user_id: req.session.user_id
 //         //category: not sure how to link category, and include username how are we setting up page?
 //     })
 //         .then(createProd => res.json(createProd))
@@ -33,6 +17,22 @@ router.post('/', withAuth, (req, res) => {
 //             res.status(500).json(err);
 //         });
 // });
+
+// for testing purposes
+router.post('/', (req, res) => {
+    Product.create({
+        product_name: req.body.product_name,
+        description: req.body.description,
+        category_id: req.body.category_id,
+        user_id: req.body.user_id
+        //category: not sure how to link category, and include username how are we setting up page?
+    })
+        .then(createProd => res.json(createProd))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
 
 
 //delete product, should delete any comments associated with product? it works as of now!!!!!!!!!!!!!!!!!!!!!!!//
