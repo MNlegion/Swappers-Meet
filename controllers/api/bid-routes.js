@@ -1,9 +1,28 @@
 const router = require('express').Router();
-const { Bid } = require('../../models');
+const { Bid, Product, Category, User } = require('../../models');
 
 //find all bid
 router.get('/', (req, res) => {
-    Bid.findAll()
+    Bid.findAll({
+      attributes: ['id', 'user_id', 'product_id'],
+      order: [['created_at', 'DESC']],
+      include: [
+          {
+              model: Product,
+              attributes: ['id', 'product_name', 'description', 'isClosed', 'category_id', 'user_id', 'file_path'],
+              include: [
+                  {
+                      model: User,
+                      attributes: ['username']
+                  },
+                  {
+                    model: Category,
+                    attributes: ['category_name']
+                  }
+              ]
+          }
+      ]
+    })
       .then(dbBidData => res.json(dbBidData))
       .catch(err => {
         console.log(err);

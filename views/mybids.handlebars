@@ -1,0 +1,58 @@
+<header>
+    {{> nav}}
+</header>
+
+<section class="m-3 p-3">
+    <h2 class="text-center">Your Bids</h2>
+    <p class="text-center">Welcome to your bids! Below you can see all the items you've bid on and whether they are open or closed by the owner.</p>
+</section>
+<section>
+    {{#each bids as |bid|}}
+        {{#if bid.product.isClosed}}
+        <article class="row m-2 p-2 border border-light bg-secondary rounded">
+                <div class="col-12 col-lg-4">
+                    {{!-- IMAGES WILL DISPLAY HERE --}}
+                    {{#if bid.product.file_path}}
+                    <img src="/uploads/{{bid.product.file_path}}" width="300px"; />
+                    {{else}}
+                    <h3 class="text-center font-italic">Image <br> Coming <br> Soon</h3>
+                    {{/if}}
+                </div>
+                <div class="col-12 col-lg-6 card m-2 p-2">
+                    {{!-- ITEM INFO WILL DISPLAY HERE --}}
+                    <h3 class="text-danger">This listing has been closed by the owner</h3>
+                    <h4 class="card-title text-dark">{{bid.product.product_name}}</h4>
+                    <div class="card-text text-dark p-2 mb-1">
+                        <p>
+                            Descripton: {{bid.product.description}}
+                            <br />
+                            Category: {{bid.product.category.category_name}}
+                        </p>
+                    </div>
+                </div>
+            </article>
+        {{else}}
+            <article class="row m-2 p-2 border border-primary rounded">
+                <div class="col-12 col-lg-4">
+                    {{!-- IMAGES WILL DISPLAY HERE --}}
+                    {{#if bid.product.file_path}}
+                    <img src="/uploads/{{bid.product.file_path}}" width="300px"; />
+                    {{else}}
+                    <h3 class="text-center font-italic">Image <br> Coming <br> Soon</h3>
+                    {{/if}}
+                </div>
+                <div class="col-12 col-lg-6 card m-2 p-2">
+                    {{!-- ITEM INFO WILL DISPLAY HERE --}}
+                    <h3 class="card-title text-dark">{{bid.product.product_name}}</h3>
+                    <div class="card-text text-dark p-2 mb-1">
+                        <p>
+                            Descripton: {{bid.product.description}}
+                            <br />
+                            Category: {{bid.product.category.category_name}}
+                        </p>
+                    </div>
+                </div>
+            </article>
+            {{/if}}
+    {{/each}}
+</section>
