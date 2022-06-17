@@ -3,20 +3,20 @@ const { Product, Category, User, Comment, Bid } = require('../../models');
 
 // get all products from most recent to least recent
 router.get('/', (req, res) => {
-    // console.log(req.session);
 
-    // // if user is not logged in, redirect to homepage
-    // if (!req.session.loggedIn) {
-    //     res.redirect('/');
-    //     return;
-    // }
+    // if user is not logged in, redirect to homepage
+    if (!req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
+
 
     Product.findAll({
-        attributes: ['id', 'product_name', 'description'],
-        // where: {
-        //     // where user_id is equal to the logged in user id?
-        //     user_id: req.session.id
-        // },
+        attributes: ['id', 'product_name', 'description', 'isClosed', 'category_id', 'user_id'],
+        where: {
+            // where user_id is equal to the logged in user id?
+            user_id: req.session.user_id
+        },
         // order: [['created_at', 'DESC']],
         include: [
             {

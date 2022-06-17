@@ -5,7 +5,7 @@
     <h2 class="text-center">Your Listings</h2>
     <p class="text-center">Welcome to your listings! Below you can see all the items you've listed, any bids you've received, and have the option to mark any listings as "closed".</p>
 </section>
-<section>
+<section id="close-listing-listener">
     {{!-- ITERATES THROUGH ALL PRODUCT DATA --}}
     {{#each dbproducts as |item| }}
     <article class="card m-2 p-2">
@@ -17,6 +17,8 @@
                 Category: {{item.category.category_name}}
             </p>
         </div>
+
+        {{!-- BID DATA --}}
         {{#if item.bids}}
             <div class="row">
                 <h4 class="col-3 border-right">Bids</h4>
@@ -28,6 +30,7 @@
             </div>
         {{/if}}
 
+        {{!-- COMMENT DATA --}}
         {{#if item.comments}}
         <div class="row">
             <h4 class="col-3 border-right">Comments</h4>
@@ -38,10 +41,10 @@
             </ul>
         </div>
         {{/if}}
-        <button id="close-listing" class="btn btn-primary p-2">Close Listing</button>
+        <button id="close-listing" data-product="{{item.id}}" class="btn btn-primary p-2">Close Listing</button>
     </article>
     {{/each}}
 </section>
 
-{{!-- <script src="/javascript/closeProduct.js"></script> --}}
+<script src="/javascript/closeProduct.js"></script>
 
