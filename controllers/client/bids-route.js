@@ -40,7 +40,8 @@ router.get('/', (req, res) => {
 
         res.render('mybids', {
             bids,
-            loggedIn: req.session.loggedIn
+            loggedIn: req.session.loggedIn,
+            username: req.session.username
         })
     })
     .catch(err => {

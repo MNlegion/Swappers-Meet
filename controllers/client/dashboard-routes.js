@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
         return;
     }
 
-    res.render('dashboard', { loggedIn: req.session.loggedIn });
+    res.render('dashboard', { loggedIn: req.session.loggedIn, username: req.session.username });
 });
 
 module.exports = router;

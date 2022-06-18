@@ -22,7 +22,8 @@ router.get('/', (req, res) => {
 
         res.render('home-page', {
           products,
-          loggedIn: req.session.loggedIn
+          loggedIn: req.session.loggedIn,
+          username: req.session.username
       })  
     })
     .catch(err => {

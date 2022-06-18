@@ -51,7 +51,8 @@ router.get('/', (req, res) => {
 
         res.render('myproducts', {
             dbproducts,
-            loggedIn: req.session.loggedIn
+            loggedIn: req.session.loggedIn,
+            username: req.session.username
         })    
     })
     .catch(err => {
