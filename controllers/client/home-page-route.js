@@ -8,7 +8,8 @@ router.get('/', (req, res) => {
     // Posts FindAll limit 5 newest products
     Product.findAll({
       attributes: ['product_name', 'description'],
-      // order: [],
+      limit: 5,
+      order: [["id", "DESC"]]
     })
     // .then dbposts data set to variable
     .then(dbProductData => {

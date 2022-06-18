@@ -14,6 +14,20 @@
           
         </p>
         <p>Sign up, Login, and start Swapping today!</p>
+
+        <div class="p-1 m-2">
+          <h3>Most Recent Posts</h3> 
+            {{#each products as |item|}}
+              <div class="card container-fluid style">
+                <div class="card-body">
+                  <h5 class="card-title font-weight-bold">{{item.product_name}}</h5>
+                  <p class="card-text">{{item.description}}</p>
+                </div>
+              </div>
+            {{/each}}
+
+        </div>
+        
       </div>
     
 	
@@ -77,17 +91,6 @@
       
     </section>
       
-
-      {{!-- RECENT POSTS --}}
-    {{#each products}}
-			<div class="card container-fluid style">
-        <div class="card-body">
-          <h5 class="card-title">f{{products.product_name}}</h5>
-          <p class="card-text">{{products.description}}l</p>
-        </div>
-		  </div>
-    {{/each}}
-		<h5 class="card-title">d{{prod.id}} k</h5>
 
   <script src="/javascript/login.js"></script> <!--handles both LOGIN and SIGNUP button-->
 

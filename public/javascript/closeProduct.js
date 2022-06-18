@@ -42,3 +42,24 @@ async function closeProductHandler(event) {
 };
 
 document.querySelector("#close-listing-listener").addEventListener("click", closeProductHandler);
+
+
+
+
+
+
+
+async function stupidButtonHandler(event) {
+    event.preventDefault();
+    console.log("moving to adding");
+    
+     
+    
+  
+      
+        document.location.replace('/addproduct/');
+      
+    };
+  
+  
+  document.querySelector('#stupidbutton').addEventListener('click', stupidButtonHandler);

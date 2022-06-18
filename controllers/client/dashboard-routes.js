@@ -4,13 +4,13 @@ const sequelize = require('../../config/connection');
 
 // dashboard route
 router.get('/', (req, res) => {
-    // console.log(req.session);
+    console.log(req.session);
 
-    // // if user is not logged in, redirect to homepage
-    // if (!req.session.loggedIn) {
-    //     res.redirect('/');
-    //     return;
-    // }
+    // if user is not logged in, redirect to homepage
+    if (!req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
 
     res.render('dashboard', { loggedIn: req.session.loggedIn });
 });
