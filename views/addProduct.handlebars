@@ -1,0 +1,48 @@
+<header>
+    {{> nav}}
+</header>
+<section class="m-3 p-3">
+    <h2 class="text-center">Add a new item</h2>
+    <p class="text-center">To add a new item, please fill out all fields below. You must upload an image with your item.</p>
+</section>
+<section>
+    <form class="d-flex flex-column">
+        <div class=" form-group has-error">
+            <label for="formName">Your Product</label>
+            <input type="text" id="formName" class="form-control" name="product_name">
+        </div>
+
+        <div class=" form-group ">
+            <p>Choose your Products Category</p>
+            <div class="form-check">
+                {{#each categories as |frog|}}
+                <!-- passed the catergory id instead of the name -->
+                <input class='form-check-input' type="radio" id={{frog.id}} name="category_id"
+                    value={{frog.id}} />
+                <label class='form-check-label' for={{frog.id}}>{{frog.category_name}}</label><br>
+                {{/each}}
+            </div>
+        </div>
+
+        <div class=" form-group">
+            <label for="formDes">Product Description</label>
+            <input type='text' id="formDes" class="form-control" name="description">
+        </div>
+
+        <div class=" form-group">
+            <label for="formFile">Image file</label>
+            <!-- changed the input name so that it matched the back end for the image -->
+            <input type='file' id="formFile" class="form-control" name="productImage">
+        </div>
+
+
+        <button type="submit" class="btn btn-primary btn-lg" id="button-addProduct">Add Product</button>
+
+
+
+    </form>
+
+
+</section>
+
+<script src="/javascript/addProduct.js"></script>

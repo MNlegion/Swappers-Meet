@@ -1,0 +1,100 @@
+<header>
+  {{>nav}}
+</header>
+
+  <body>
+
+    {{!-- ABOUT US SECTION spans whole screen (about us takes 7, login takes 5)--}}
+    <section class="container d-flex flex-row">
+      <div class="col-7 d-flex flex-column">
+        <h1 class="container-fluid">About Us</h1>
+        <p>
+          We're a website dedicated to allowing to carry on the tradition of Wright County's Swappers Meet and the Buy Nothing during the Covid isolation. 
+          We hope our website provides a similar experience and continue to contribute to the zero waste dream. 
+          
+        </p>
+        <p>Sign up, Login, and start Swapping today!</p>
+
+        <div class="p-1 m-2">
+          <h3>Most Recent Posts</h3> 
+            {{#each products as |item|}}
+              <div class="card container-fluid style">
+                <div class="card-body">
+                  <h5 class="card-title font-weight-bold">{{item.product_name}}</h5>
+                  <p class="card-text">{{item.description}}</p>
+                </div>
+              </div>
+            {{/each}}
+
+        </div>
+        
+      </div>
+    
+	
+      {{!-- SIGNUP AND LOGIN FORMS --}}
+      <div class="col-5 d-flex flex-row border-left">
+
+        <div class="d-flex flex-column">
+
+          {{!-- LOGIN --}}
+          <form class="d-flex flex-column m-5">
+
+            
+            
+            <div class=" form-group">
+              <label for="formEmail">Email address</label>
+              <input type="email" id="formEmailLogin" class="form-control">
+            </div>
+            
+            <div class=" form-group">
+              <label for="formPassword">Password</label>
+              <input type="password" id="formPasswordLogin" class="form-control">
+            </div>
+          
+
+            {{!-- LOGIN BUTTON --}}
+            <form>
+              <button type="button" class="btn btn-primary btn-lg" id="button-login">Login!</button>
+              
+            </form>
+          
+          </form>
+
+          {{!-- SIGNUP --}}
+          <form class="d-flex flex-column m-5">
+            <div class=" form-group has-error">
+              <label for="formName">Your name</label>
+              <input type="text" id="formName" class="form-control">
+            </div>
+
+            <div class=" form-group">
+              <label for="formPassword">Password</label>
+              <input type="password" id="formPassword" class="form-control">
+            </div>
+
+            
+            <div class=" form-group">
+              <label for="formEmail">Email address</label>
+              <input type="email" id="formEmail" class="form-control">
+            </div>
+            
+          
+
+            {{!-- SIGNUP BUTTON --}}
+            <form>
+              <button type="button" class="btn btn-primary btn-lg" id="button-sign-up">Sign Up!</button>
+            </form>
+          
+          </form>
+        </div>
+      </div>
+      
+    </section>
+      
+
+  <script src="/javascript/login.js"></script> <!--handles both LOGIN and SIGNUP button-->
+
+
+  
+  </body>
+</html>
