@@ -7,7 +7,7 @@
     <p class="text-center">Welcome to your bids! Below you can see all the items you've bid on and whether they are open or closed by the owner.</p>
 </section>
 <section>
-
+{{#if bids}}
   {{#each openbids as |bid|}}
     {{!-- STYLING FOR OPEN PRODUCTS --}}
 
@@ -60,4 +60,12 @@
                 </div>
             </article>
         {{/each}}
+
+    {{!-- IF NO BIDS EXIST --}}
+    {{else}}
+        <article class="row m-2 p-2 border border-warning rounded justify-content-center">
+        <h3 class="text-center">You have not bid on any items. Head to the marketplace to see what's available!</h3>
+    </article>
+    {{/if}}
+    <a href='/marketplace' class="btn btn-primary p-2" id="stupidbutton">To marketplace>> </a>
 </section>

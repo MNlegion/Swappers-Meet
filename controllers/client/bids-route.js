@@ -59,6 +59,7 @@ router.get('/', (req, res) => {
         console.log("openbids", openbids);
 
         res.render('mybids', {
+            bids,
             closedbids,
             openbids,
             loggedIn: req.session.loggedIn,
