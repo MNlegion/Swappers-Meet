@@ -5,8 +5,8 @@ async function newProductHandler(event) {
     event.preventDefault();
 
     const formdata = new FormData(event.target.form);
-//passed form data instead of json data to allow images
-// Accept */* instead of just json
+    //passed form data instead of json data to allow images
+    // Accept */* instead of just json
     const response = await fetch(`/api/product`, {
         method: 'POST',
         body: formdata,
@@ -19,7 +19,7 @@ async function newProductHandler(event) {
     if (response.ok) {
         document.location.replace('/dashboard');
     } else {
-        alert(response.statusText);
+        alert("You must upload an image");
     }
 }
 
