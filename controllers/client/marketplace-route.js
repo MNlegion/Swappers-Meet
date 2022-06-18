@@ -4,13 +4,13 @@ const { Product, Category, User } = require('../../models');
 
 // marketplace route  (/marketplace)
 router.get('/', (req, res) => {
-    // console.log(req.session);
+    console.log(req.session);
 
-    // // if user is not logged in, redirect to homepage
-    // if (!req.session.loggedIn) {
-    //     res.redirect('/');
-    //     return;
-    // }
+    // if user is not logged in, redirect to homepage
+    if (!req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
 
     Product.findAll({
         attributes: ['id', 'product_name', 'description', 'category_id', 'file_path'],
