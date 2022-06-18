@@ -38,7 +38,7 @@ Product.init(
     },
     file_path: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true      
     },
 
     user_id: {
