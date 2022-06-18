@@ -7,10 +7,36 @@
     <p class="text-center">Welcome to your bids! Below you can see all the items you've bid on and whether they are open or closed by the owner.</p>
 </section>
 <section>
-    {{#each bids as |bid|}}
 
+  {{#each openbids as |bid|}}
+    {{!-- STYLING FOR OPEN PRODUCTS --}}
+
+            <article class="row m-2 p-2 border border-primary rounded">
+                <div class="col-12 col-lg-4">
+                    {{!-- IMAGES WILL DISPLAY HERE --}}
+                    {{#if bid.product.file_path}}
+                    <img src="/uploads/{{bid.product.file_path}}" width="300px"; />
+                    {{else}}
+                    <h3 class="text-center font-italic">Image <br> Coming <br> Soon</h3>
+                    {{/if}}
+                </div>
+                <div class="col-12 col-lg-6 card m-2 p-2">
+                    {{!-- ITEM INFO WILL DISPLAY HERE --}}
+                    <h3 class="card-title text-dark">{{bid.product.product_name}}</h3>
+                    <div class="card-text text-dark p-2 mb-1">
+                        <p>
+                            Descripton: {{bid.product.description}}
+                            <br />
+                            Category: {{bid.product.category.category_name}}
+                        </p>
+                    </div>
+                </div>
+            </article>
+    {{/each}}
+
+    {{#each closedbids as |bid|}}
     {{!-- STYLING FOR CLOSED PRODUCTS --}}
-        {{#if bid.product.isClosed}}
+
         <article class="row m-2 p-2 border border-light bg-secondary rounded">
                 <div class="col-12 col-lg-4">
                     {{!-- IMAGES WILL DISPLAY HERE --}}
@@ -33,30 +59,5 @@
                     </div>
                 </div>
             </article>
-        {{else}}
-
-        {{!-- STYLING FOR OPEN PRODUCTS --}}
-            <article class="row m-2 p-2 border border-primary rounded">
-                <div class="col-12 col-lg-4">
-                    {{!-- IMAGES WILL DISPLAY HERE --}}
-                    {{#if bid.product.file_path}}
-                    <img src="/uploads/{{bid.product.file_path}}" width="300px"; />
-                    {{else}}
-                    <h3 class="text-center font-italic">Image <br> Coming <br> Soon</h3>
-                    {{/if}}
-                </div>
-                <div class="col-12 col-lg-6 card m-2 p-2">
-                    {{!-- ITEM INFO WILL DISPLAY HERE --}}
-                    <h3 class="card-title text-dark">{{bid.product.product_name}}</h3>
-                    <div class="card-text text-dark p-2 mb-1">
-                        <p>
-                            Descripton: {{bid.product.description}}
-                            <br />
-                            Category: {{bid.product.category.category_name}}
-                        </p>
-                    </div>
-                </div>
-            </article>
-            {{/if}}
-    {{/each}}
+        {{/each}}
 </section>
