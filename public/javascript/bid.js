@@ -24,7 +24,7 @@ async function bidHandler(event) {
         if (response.ok) {
             console.log('bid submitted');
         } else {
-            console.log('no product')
+            alert("You can't bid on the same product twice");
         }
     }
 };
