@@ -3,7 +3,7 @@
 # <ins>SWAPPERS-MEET</ins>
 ![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)![](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)![](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)![](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)![](https://img.shields.io/badge/-Sequelize-d3d3d3?style=for-the-badge&logo=sequelize&logoColor=52B0E7)
 ## <ins>Description</ins>
-Inspired by the swamp meet in Minnesota, the Swamp Meet website aims to do the same thing. Users are able to browse posted by other users and post items themselves. They can also comment on the posts.  
+Inspired by the swap meet in Minnesota, the Swappers Meet website aims to do the same thing. Users are able to browse items posted by other users and post items themselves. They can also comment on the posts and inquire about additional item details.  
 
 ## <ins>Table of Contents</ins>
 - [Installation](#installation)
@@ -11,7 +11,7 @@ Inspired by the swamp meet in Minnesota, the Swamp Meet website aims to do the s
 - [Usage](#usage)
 - [License](#license)
 - [FAQ](#faq)
--[Future Development Ideas](#future-development-ideas)
+- [Future Development Ideas](#future-development-ideas)
 
 ## <ins>Installation</ins>  
  To run the site:  
@@ -35,9 +35,10 @@ This project uses:
 - Node.js (runtime environment)
 - SQL (database)
 - Sequalize  
- - Sequalized is used for ORM and for meeting the MVC pardim
+ - Sequalize is used for ORM and for meeting the MVC pardim
 
 Deployed on Heroku
+
 ## <ins>Usage</ins>
 
  To view more than 5 posts that are seen on the homepage, the user must sign in or create an account by entering a username, password, and email.  
