@@ -5,6 +5,8 @@
 ## <ins>Description</ins>
 Inspired by the swap meet in Minnesota, the Swappers Meet website aims to do the same thing. Users are able to browse items posted by other users and post items themselves. They can also comment on the posts and inquire about additional item details.  
 
+![Screenshot of Swappers Meet Dashboard](./src/Screenshot%202022-06-18%20194919.png)
+
 ## <ins>Table of Contents</ins>
 - [Application Link](#application-link)
 - [Installation](#installation)
@@ -13,6 +15,7 @@ Inspired by the swap meet in Minnesota, the Swappers Meet website aims to do the
 - [License](#license)
 - [FAQ](#faq)
 - [Future Development Ideas](#future-development-ideas)
+- [Contributers](#contributers)
 
 ## <ins>Application Link</ins> 
 [Swappers Meet](https://swappers-meet.herokuapp.com/)
@@ -26,7 +29,7 @@ Inspired by the swap meet in Minnesota, the Swappers Meet website aims to do the
  - Type *node server*  
  - Open prefered web broswer and go to *localhost:3001*  
 
- Alternatively go to the Geroku link: https://swappers-meet.herokuapp.com/   
+ Alternatively go to the Heroku link: https://swappers-meet.herokuapp.com/   
  
 ## <ins>Infrastructure</ins>  
 This project uses:  
@@ -68,5 +71,14 @@ This project is covered under MIT
 - Commenting functionality on posts (separate from Bids)  
 - Search bar  
 - Tag item locations (local pickup in specific area vs. shipping available)  
+
+
+## <ins>Contributers</ins>
+- [Emma Olson-Rossow](https://github.com/emmazart)
+- [Christopher Borer](https://github.com/cspower5)
+- [Kayla Vangel](https://github.com/KaylaVangel)
+- [Andre Blankholm](https://github.com/AndreBlankholm)
+- [Justin Huang](https://github.com/justincode98)
+- [Robert Kreuser](https://github.com/MNlegion)
 
 
