@@ -29,7 +29,7 @@ Inspired by the swap meet in Minnesota, the Swappers Meet website aims to do the
  - Type *node server*  
  - Open prefered web broswer and go to *localhost:3001*  
 
- Alternatively go to the Heroku link: https://swappers-meet.herokuapp.com/   
+
  
 ## <ins>Infrastructure</ins>  
 This project uses:  
