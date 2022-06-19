@@ -28,6 +28,8 @@ Inspired by the swap meet in Minnesota, the Swappers Meet website aims to do the
  - Type *node seeds* (unless you want to proceed without seeding the database)  
  - Type *node server*  
  - Open prefered web broswer and go to *localhost:3001*  
+  
+ Alternatively, a live site can be be found at the Application Link section.
 
 
  
@@ -41,8 +43,7 @@ This project uses:
 - Express-session (authentication)
 - Node.js (runtime environment)
 - SQL (database)
-- Sequalize  
- - Sequalize is used for ORM and for meeting the MVC pardim
+- Sequalize (used for ORM and for meeting the MVC pardim)
 
 Deployed on Heroku
 
@@ -62,8 +63,6 @@ Deployed on Heroku
 
 This project is covered under MIT
 
-
-## <ins>FAQ</ins>
 
 ## <ins>Future Development Ideas</ins>
 - Sort items by category  
