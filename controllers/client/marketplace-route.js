@@ -17,6 +17,7 @@ router.get('/', (req, res) => {
         where: {
             isClosed: false
         },
+        order: [["created_at", "DESC"]],
         include: [
             {
                 model: User,

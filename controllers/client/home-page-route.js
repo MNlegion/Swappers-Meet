@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
         isClosed: false
       },
       limit: 5,
-      order: [["id", "DESC"]]
+      order: [["created_at", "DESC"]]
     })
     // .then dbposts data set to variable
     .then(dbProductData => {

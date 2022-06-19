@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const { Product, User, Bid, Category } = require('../../models');
 
+let openbids = [];
+let closedbids = [];
+
 router.get('/', (req, res) => {
 
     // if user is not logged in, redirect to homepage
@@ -18,10 +21,9 @@ router.get('/', (req, res) => {
         include: [
             {
                 model: Product,
-                attributes: ['id', 'product_name', 'description', 'isClosed', 'category_id', 'user_id', 'file_path'],
-                group: "isClosed",
-                // sort: ['isClosed', 'DESC' ],
-                // order: [['isClosed', false ]],
+                attributes: ['id', 'product_name', 'description', 'isClosed', 'category_id', 'user_id', 'file_path', 
+                            // sequelize.fn('count', sequelize.col('isClosed'))
+                        ],
                 include: [
                     {
                         model: User,
@@ -31,15 +33,35 @@ router.get('/', (req, res) => {
                         model: Category,
                         attributes: ['category_name']
                     }
-                ]
+                ],
+                group: "Product.isClosed",
             }
         ]
     })
     .then(dbBidData => {
+        console.log("first product is closed", dbBidData[0].product.isClosed);
         const bids = dbBidData.map(bid => bid.get({ plain: true }));
+    
+        // console.log("first product", bids.length);
+
+        for (const b of bids) {
+           console.log(b.product.isClosed)
+
+           // if isClosed = true / product is closed
+           if (b.product.isClosed === true) {
+            closedbids.push(b);
+           } else {
+               openbids.push(b)
+           }
+        };
+
+        console.log("closedbids", closedbids);
+        console.log("openbids", openbids);
 
         res.render('mybids', {
             bids,
+            closedbids,
+            openbids,
             loggedIn: req.session.loggedIn,
             username: req.session.username
         })
@@ -51,7 +73,7 @@ router.get('/', (req, res) => {
 });
 
 
-// // SECOND TRY
+// SECOND TRY
 // router.get('/', (req, res) => {
 
 //     // if user is not logged in, redirect to homepage
@@ -60,7 +82,7 @@ router.get('/', (req, res) => {
 //         return;
 //     }
 
-//     const openbids = await Bid.findAll({
+//     Bid.findAll({
 //         attributes: ['id', 'user_id', 'product_id'],
 //         where: {
 //             // where user_id is equal to logged in user
@@ -87,54 +109,51 @@ router.get('/', (req, res) => {
 //         ]
 //     })
 //     .then(dbBidData => {
-//         return dbBidData.map(bid => bid.get({ plain: true }));
+//         return openbids = dbBidData.map(bid => bid.get({ plain: true }));
 //     })
-//     .catch(err => {
-//         console.log(err);
-//         res.status(500).json(err);
-//     });
-
-//     const closedbids = await Bid.findAll({
-//         attributes: ['id', 'user_id', 'product_id'],
-//         where: {
-//             // where user_id is equal to logged in user
-//             user_id: req.session.user_id
-//         },
-//         include: [
-//             {
-//                 model: Product,
-//                 attributes: ['id', 'product_name', 'description', 'isClosed', 'category_id', 'user_id', 'file_path'],
-//                 // order: [['createdAt', 'DESC']],
-//                 where: {
-//                     isClosed: true
-//                 },
-//                 include: [
-//                     {
-//                         model: User,
-//                         attributes: ['username']
+//     .then(
+//         Bid.findAll({
+//             attributes: ['id', 'user_id', 'product_id'],
+//             where: {
+//                 // where user_id is equal to logged in user
+//                 user_id: req.session.user_id
+//             },
+//             include: [
+//                 {
+//                     model: Product,
+//                     attributes: ['id', 'product_name', 'description', 'isClosed', 'category_id', 'user_id', 'file_path'],
+//                     // order: [['createdAt', 'DESC']],
+//                     where: {
+//                         isClosed: true
 //                     },
-//                     {
-//                         model: Category,
-//                         attributes: ['category_name']
-//                     }
-//                 ]
-//             }
-//         ]
-//     })
-//     .then(dbBidData => {
-//         return dbBidData.map(bid => bid.get({ plain: true }));
-//     })
+//                     include: [
+//                         {
+//                             model: User,
+//                             attributes: ['username']
+//                         },
+//                         {
+//                             model: Category,
+//                             attributes: ['category_name']
+//                         }
+//                     ]
+//                 }
+//             ]
+//         })
+//         .then(dbBidData => {
+//             return closedbids = dbBidData.map(bid => bid.get({ plain: true }));
+//         })
+//     )
+//     .then(
+//         res.render('mybids', {
+//             openbids,
+//             closedbids,
+//             loggedIn: req.session.loggedIn
+//         })
+//     )
 //     .catch(err => {
 //         console.log(err);
 //         res.status(500).json(err);
 //     });
-
-//     res.render('mybids', {
-//         openbids,
-//         closedbids,
-//         loggedIn: req.session.loggedIn
-//     })
-
 // });
 
 
