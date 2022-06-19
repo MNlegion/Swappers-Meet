@@ -6,12 +6,16 @@
 Inspired by the swap meet in Minnesota, the Swappers Meet website aims to do the same thing. Users are able to browse items posted by other users and post items themselves. They can also comment on the posts and inquire about additional item details.  
 
 ## <ins>Table of Contents</ins>
+- [Application Link](#application-link)
 - [Installation](#installation)
 - [Infrastructure](#infrastructure)
 - [Usage](#usage)
 - [License](#license)
 - [FAQ](#faq)
 - [Future Development Ideas](#future-development-ideas)
+
+## <ins>Application Link</ins> 
+[Swappers Meet](https://swappers-meet.herokuapp.com/)
 
 ## <ins>Installation</ins>  
  To run the site:  
